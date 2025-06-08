@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - gateway
+    environment:
+      - REACT_APP_GRAPHQL_URI=http://localhost:4000/graphql
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+
+  gateway:
+    build:
+      context: ./gateway
+    ports:
+      - "4000:4000"
+    depends_on:
+      - recommendation-engine
+      - match-data-service
+      - trend-service
+    environment:
+      - BETTING_SERVICE_URL=http://recommendation-engine:5000
+      - MATCH_SERVICE_URL=http://match-data-service:6000
+      - TREND_SERVICE_URL=http://trend-service:7000
+    volumes:
+      - ./gateway:/app
+      - /app/node_modules
+
+  recommendation-engine:
+    build:
+      context: ./recommendation-engine
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./recommendation-engine:/app
+
+  match-data-service:
+    build:
+      context: ./match-data-service
+    ports:
+      - "6000:6000"
+    volumes:
+      - ./match-data-service:/app
+
+  trend-service:
+    build:
+      context: ./trend-service
+    ports:
+      - "7000:7000"
+    volumes:
+      - ./trend-service:/app
