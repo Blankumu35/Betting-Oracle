@@ -12,8 +12,13 @@ class BettingAPI extends RESTDataSource {
       return response.map(suggestion => ({
         id: suggestion.id,
         matchId: suggestion.matchId,
-        suggestedBet: suggestion.suggestedBet,
-        odds: suggestion.odds
+        homeTeam: suggestion.homeTeam,
+        awayTeam: suggestion.awayTeam,
+        prediction: suggestion.prediction,
+        confidence: suggestion.confidence,
+        reasoning: suggestion.reasoning,
+        odds: suggestion.odds,
+        timestamp: suggestion.timestamp || new Date().toISOString()
       }));
     } catch (error) {
       console.error('Error fetching betting suggestions:', error);

@@ -24,6 +24,10 @@ const server = new ApolloServer({
     
     // Add the user to the context
     return { user };
+  },
+  cors: {
+    origin: 'http://localhost:3000', // Frontend URL
+    credentials: true // Allow credentials
   }
 });
 

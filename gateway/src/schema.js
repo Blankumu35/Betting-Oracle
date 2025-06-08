@@ -26,8 +26,13 @@ const typeDefs = gql`
   type BettingSuggestion {
     id: ID!
     matchId: ID!
-    suggestedBet: String!
+    homeTeam: String!
+    awayTeam: String!
+    prediction: String!
+    confidence: Float!
+    reasoning: String!
     odds: Float!
+    timestamp: String!
   }
 
   type Match {
