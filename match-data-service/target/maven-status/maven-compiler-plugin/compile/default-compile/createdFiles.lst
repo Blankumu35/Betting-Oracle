@@ -1,0 +1,15 @@
+com\example\matchdata\Team.class
+com\example\matchdata\Match.class
+com\example\matchdata\FixturesResponse.class
+com\example\matchdata\Referee.class
+com\example\matchdata\RecommendationData.class
+com\example\matchdata\ScoreDetail.class
+com\example\matchdata\Odds.class
+com\example\matchdata\Area.class
+com\example\matchdata\CompetitionsResponse.class
+com\example\matchdata\Competition.class
+com\example\matchdata\Score.class
+com\example\matchdata\MatchDataServiceApplication.class
+com\example\matchdata\Season.class
+com\example\matchdata\Filters.class
+com\example\matchdata\MatchDataController.class
