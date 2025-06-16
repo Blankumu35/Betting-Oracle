@@ -1,6 +1,6 @@
 const { ApolloServer } = require('apollo-server');
 const { typeDefs, resolvers } = require('./schema');
-const BettingAPI = require('./datasources/BettingAPI');
+//const BettingAPI = require('./datasources/BettingAPI');
 const MatchDataAPI = require('./datasources/MatchDataAPI');
 const TrendAPI = require('./datasources/TrendAPI');
 const UserAPI = require('./datasources/UserAPI');
@@ -10,7 +10,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   dataSources: () => ({
-    bettingAPI: new BettingAPI(),
+   // bettingAPI: new BettingAPI(),
     matchDataAPI: new MatchDataAPI(),
     trendAPI: new TrendAPI(),
     userAPI: new UserAPI()
