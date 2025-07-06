@@ -24,15 +24,11 @@ const typeDefs = gql`
   }
 
   type BettingSuggestion {
-    id: ID!
-    matchId: ID!
-    homeTeam: String!
-    awayTeam: String!
-    prediction: String!
+    fixture: String!
+    predicted_outcome: String!
     confidence: Float!
-    reasoning: String!
-    odds: Float!
-    timestamp: String!
+    over_under: String
+    over_under_confidence: Float
   }
 
   type Match {
@@ -51,11 +47,8 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    bettingSuggestions: async (_, __, { user, dataSources }) => {
-      if (!user) {
-        throw new Error('Not authenticated');
-      }
-      return dataSources.bettingAPI.getSuggestions(user.id);
+    bettingSuggestions: async (_, __, { dataSources }) => {
+      return dataSources.bettingAPI.getSuggestions();
     },
     matchData: async (_, __, { dataSources }) => {
       return dataSources.matchDataAPI.getMatchData();

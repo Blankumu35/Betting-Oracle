@@ -1,8 +1,6 @@
 const { ApolloServer } = require('apollo-server');
 const { typeDefs, resolvers } = require('./schema');
-//const BettingAPI = require('./datasources/BettingAPI');
-const MatchDataAPI = require('./datasources/MatchDataAPI');
-const TrendAPI = require('./datasources/TrendAPI');
+const BettingAPI = require('./datasources/BettingAPI');
 const UserAPI = require('./datasources/UserAPI');
 const { getUser } = require('./auth');
 
@@ -10,10 +8,8 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   dataSources: () => ({
-   // bettingAPI: new BettingAPI(),
-    matchDataAPI: new MatchDataAPI(),
-    trendAPI: new TrendAPI(),
-    userAPI: new UserAPI()
+    bettingAPI: new BettingAPI(),
+   // userAPI: new UserAPI()
   }),
   context: ({ req }) => {
     // Get the user token from the headers

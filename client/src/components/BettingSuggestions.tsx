@@ -1,94 +1,65 @@
-import React from 'react';
-import { useQuery, gql } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
 
-const GET_BETTING_SUGGESTIONS = gql`
-  query GetBettingSuggestions {
-    bettingSuggestions {
-      id
-      matchId
-      homeTeam
-      awayTeam
-      prediction
-      confidence
-      reasoning
-      odds
-      timestamp
-    }
-  }
-`;
-
-interface BettingSuggestion {
-  id: string;
-  matchId: string;
-  homeTeam: string;
-  awayTeam: string;
-  prediction: string;
+interface Prediction {
+  fixture: string;
+  predicted_outcome: string;
   confidence: number;
-  reasoning: string;
-  odds: number;
-  timestamp: string;
+  over_under?: string;
+  over_under_confidence?: number;
 }
 
 const BettingSuggestions: React.FC = () => {
-  const { loading, error, data } = useQuery(GET_BETTING_SUGGESTIONS);
+  const [predictions, setPredictions] = useState<Prediction[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  if (loading) return (
-    <div className="flex justify-center items-center p-8">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-    </div>
-  );
-  
-  if (error) return (
-    <div className="p-4 bg-red-100 text-red-700 rounded-lg">
-      Error: {error.message}
-    </div>
-  );
+  useEffect(() => {
+    setLoading(true);
+    fetch('http://localhost:8001/api/predictions')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          setPredictions(data);
+          setError(null);
+        } else {
+          setError(data.error || 'Unknown error');
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div className="p-8 text-center">Loading predictions...</div>;
+  if (error) return <div className="p-8 text-red-600">Error: {error}</div>;
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">Betting Suggestions</h2>
-      <div className="space-y-6">
-        {data.bettingSuggestions.map((suggestion: BettingSuggestion) => (
-          <div key={suggestion.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-            <div className="flex justify-between items-start mb-3">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {suggestion.homeTeam} vs {suggestion.awayTeam}
-                </h3>
-                <p className="text-sm text-gray-500">
-                  {new Date(suggestion.timestamp).toLocaleDateString()}
-                </p>
-              </div>
-              <div className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                Odds: {suggestion.odds.toFixed(2)}
-              </div>
-            </div>
-            
-            <div className="mb-3">
-              <div className="flex items-center gap-2">
-                <span className="font-medium text-gray-700">Prediction:</span>
-                <span className="text-green-600 font-semibold">{suggestion.prediction}</span>
-              </div>
-              <div className="flex items-center gap-2 mt-1">
-                <span className="font-medium text-gray-700">Confidence:</span>
-                <div className="w-32 bg-gray-200 rounded-full h-2.5">
-                  <div 
-                    className="bg-blue-600 h-2.5 rounded-full" 
-                    style={{ width: `${suggestion.confidence * 100}%` }}
-                  ></div>
-                </div>
-                <span className="text-sm text-gray-600">
-                  {(suggestion.confidence * 100).toFixed(0)}%
-                </span>
-              </div>
-            </div>
-            
-            <p className="text-gray-600 text-sm italic">
-              "{suggestion.reasoning}"
-            </p>
-          </div>
-        ))}
-      </div>
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">Predictions</h2>
+      <table className="min-w-full table-auto border">
+        <thead>
+          <tr className="bg-gray-100">
+            <th className="px-4 py-2 text-left">Fixture</th>
+            <th className="px-4 py-2 text-left">Predicted Outcome</th>
+            <th className="px-4 py-2 text-left">Confidence</th>
+            <th className="px-4 py-2 text-left">Over/Under 2.5</th>
+            <th className="px-4 py-2 text-left">O/U Confidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          {predictions.map((p, idx) => (
+            <tr key={idx} className="border-t">
+              <td className="px-4 py-2">{p.fixture}</td>
+              <td className="px-4 py-2">{p.predicted_outcome}</td>
+              <td className="px-4 py-2">{(p.confidence * 100).toFixed(1)}%</td>
+              <td className="px-4 py-2">{p.over_under || '-'}</td>
+              <td className="px-4 py-2">{p.over_under_confidence !== undefined ? (p.over_under_confidence * 100).toFixed(1) + '%' : '-'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

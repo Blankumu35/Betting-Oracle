@@ -32,14 +32,14 @@ def clean_team_name(name: str) -> str:
     """Remove country/nation identifiers from team names"""
     # Remove country codes and names
     patterns = [
-        r'^[a-z]{2}\s+',  # Two-letter codes at start (e.g., "br Palmeiras")
-        r'^[A-Z]{2}\s+',  # Two-letter codes in caps at start
-        r'^\([a-z]{2}\)\s+',  # Two-letter codes in parentheses at start
-        r'^\([A-Z]{2}\)\s+',  # Two-letter codes in caps in parentheses at start
-        r'\s+[a-z]{2}$',  # Two-letter codes at end (e.g., "Inter Miami us")
-        r'\s+[A-Z]{2}$',  # Two-letter codes in caps at end
-        r'\s+\([a-z]{2}\)$',  # Two-letter codes in parentheses at end
-        r'\s+\([A-Z]{2}\)$',  # Two-letter codes in caps in parentheses at end
+        r'^[a-z]{2,3}\s+',  # Two or three letter codes at start (e.g., "br Palmeiras")
+        r'^[A-Z]{2,3}\s+',  # Two or three letter codes in caps at start
+        r'^\([a-z]{2,3}\)\s+',  # Two or three letter codes in parentheses at start
+        r'^\([A-Z]{2,3}\)\s+',  # Two or three letter codes in caps in parentheses at start
+        r'\s+[a-z]{2,3}$',  # Two or three letter codes at end (e.g., "Inter Miami us")
+        r'\s+[A-Z]{2,3}$',  # Two or three letter codes in caps at end
+        r'\s+\([a-z]{2,3}\)$',  # Two or three letter codes in parentheses at end
+        r'\s+\([A-Z]{2,3}\)$',  # Two or three letter codes in caps in parentheses at end
     ]
     
     cleaned_name = name
@@ -185,11 +185,11 @@ class FootballStatsAgent:
             logger.error(f"Failed to fetch fixtures: {str(e)}")
             return []
 
-    async def get_head_to_head_stats(self, home_id: str, away_id: str) -> Dict:
-        """Get head-to-head statistics between two teams from fbref"""
-        logger.info(f"Fetching H2H stats for teams {home_id} vs {away_id}...")
-        try:
-            url = f"https://fbref.com/en/stathead/matchup/teams/{home_id}/{away_id}"
+   # async def get_head_to_head_stats(self, home_id: str, away_id: str) -> Dict:
+   #     """Get head-to-head statistics between two teams from fbref"""
+   #     logger.info(f"Fetching H2H stats for teams {home_id} vs {away_id}...")
+        #try:
+            #url = f"https://fbref.com/en/stathead/matchup/teams/{home_id}/{away_id}"
             
             async with async_playwright() as p:
                 browser = await p.chromium.launch(headless=True)
@@ -203,7 +203,7 @@ class FootballStatsAgent:
                 await browser.close()
                 
                 soup = BeautifulSoup(content, 'html.parser')
-                table = soup.find('table', {'id': 'matchup'})
+                table = soup.find('table', {'id': 'games_history_all'})
                 
                 if not table:
                     raise ValueError("Couldn't find H2H table on fbref.com")
@@ -238,15 +238,16 @@ class FootballStatsAgent:
                     "Avg goals last 4": round(avg_last_4, 2),
                 }
                 
-        except Exception as e:
-            logger.error(f"Failed to get H2H stats: {str(e)}")
-            return {"W-D-L": (0, 0, 0), "Avg goals last 3": 0, "Avg goals last 4": 0}
+        #except Exception as e:
+        #    logger.error(f"Failed to get H2H stats: {str(e)}")
+        #    return {"W-D-L": (0, 0, 0), "Avg goals last 3": 0, "Avg goals last 4": 0}
 
-    async def get_team_form(self, team_id: str, is_home: bool) -> Dict:
+    #async def get_team_form(self, team_id: str, is_home: bool) -> Dict:
         """Get team's form and stats from fbref"""
         logger.info(f"Fetching form for team {team_id}...")
         try:
-            url = f"https://fbref.com/en/squads/{team_id}/2024-2025/stats/"
+            # Use the team's stats page URL pattern
+            url = f"https://fbref.com/en/squads/{team_id}/2024-2025/all_comps/stats/"
             
             async with async_playwright() as p:
                 browser = await p.chromium.launch(headless=True)
@@ -301,36 +302,45 @@ class FootballStatsAgent:
 
     async def analyze_fixtures(self) -> List[Dict]:
         fixtures = await self.get_fixtures()
-        results = []
-        
-        # Create tasks for concurrent execution
-        tasks = []
-        for fixture in fixtures:
-            if fixture['HomeID'] and fixture['AwayID']:
-                tasks.append(self.analyze_fixture(fixture))
-        
-        # Execute all tasks concurrently
-        results = await asyncio.gather(*tasks, return_exceptions=True)
-        
-        # Filter out any failed analyses
-        return [r for r in results if not isinstance(r, Exception)]
+    #    results = []
+     #   tasks = []
+     #   for fixture in fixtures:
+     #       if fixture['HomeID'] and fixture['AwayID']:
+     #           tasks.append(self.analyze_fixture(fixture))
+     #   analyzed = await asyncio.gather(*tasks, return_exceptions=True)
+     #   for r in analyzed:
+     #       if isinstance(r, dict):
+     #           results.append(r)
+     #   return results
+        return fixtures
 
     async def analyze_fixture(self, fixture: Dict) -> Dict:
-        """Analyze a single fixture"""
         try:
             home = fixture['Home']
             away = fixture['Away']
             logger.info(f"\nAnalyzing {home} vs {away} on {fixture['Date']}")
-            
-            # Get H2H and team stats concurrently
-            h2h_task = self.get_head_to_head_stats(fixture['HomeID'], fixture['AwayID'])
-            home_form_task = self.get_team_form(fixture['HomeID'], True)
-            away_form_task = self.get_team_form(fixture['AwayID'], False)
-            
-            h2h, home_form, away_form = await asyncio.gather(
-                h2h_task, home_form_task, away_form_task
-            )
-            
+
+            # Defensive H2H fetch
+            try:
+                h2h = await self.get_head_to_head_stats(fixture['HomeID'], fixture['AwayID'])
+            except Exception as e:
+                logger.error(f"H2H fetch failed for {home} vs {away}: {e}")
+                h2h = {"W-D-L": (0, 0, 0), "Avg goals last 3": 0, "Avg goals last 4": 0}
+
+            # Defensive home form fetch
+            try:
+                home_form = await self.get_team_form(fixture['HomeID'], True)
+            except Exception as e:
+                logger.error(f"Home form fetch failed for {home}: {e}")
+                home_form = {"Record": "0-0-0", "Goals": 0, "GoalsPerGame": 0, "xG": 0, "xGA": 0}
+
+            # Defensive away form fetch
+            try:
+                away_form = await self.get_team_form(fixture['AwayID'], False)
+            except Exception as e:
+                logger.error(f"Away form fetch failed for {away}: {e}")
+                away_form = {"Record": "0-0-0", "Goals": 0, "GoalsPerGame": 0, "xG": 0, "xGA": 0}
+
             result = {
                 "Date": fixture['Date'],
                 "Time": fixture['Time'],
@@ -348,13 +358,12 @@ class FootballStatsAgent:
                 f"{away} Goals/Game": away_form["GoalsPerGame"],
                 f"{away} xG": away_form["xG"],
             }
-            
+
             logger.info(f"Analysis complete for {home} vs {away}")
             return result
-            
         except Exception as e:
             logger.error(f"Failed to analyze {fixture['Home']} vs {fixture['Away']}: {str(e)}")
-            raise
+            return {}
 
 async def main():
     agent = FootballStatsAgent()

@@ -3,22 +3,18 @@ const { RESTDataSource } = require('apollo-datasource-rest');
 class BettingAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = process.env.BETTING_SERVICE_URL || 'http://localhost:4001';
+    this.baseURL = 'http://localhost:8001'; // FastAPI ML service
   }
 
-  async getSuggestions(userId) {
+  async getSuggestions() {
     try {
-      const response = await this.get(`/suggestions/${userId}`);
+      const response = await this.get('/api/predictions');
       return response.map(suggestion => ({
-        id: suggestion.id,
-        matchId: suggestion.matchId,
-        homeTeam: suggestion.homeTeam,
-        awayTeam: suggestion.awayTeam,
-        prediction: suggestion.prediction,
+        fixture: suggestion.fixture,
+        predicted_outcome: suggestion.predicted_outcome,
         confidence: suggestion.confidence,
-        reasoning: suggestion.reasoning,
-        odds: suggestion.odds,
-        timestamp: suggestion.timestamp || new Date().toISOString()
+        over_under: suggestion.over_under,
+        over_under_confidence: suggestion.over_under_confidence
       }));
     } catch (error) {
       console.error('Error fetching betting suggestions:', error);

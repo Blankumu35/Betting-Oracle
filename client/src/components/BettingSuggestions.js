@@ -5,14 +5,11 @@ import { Card, CardContent, Typography, Grid, CircularProgress, Alert } from '@m
 const GET_BETTING_SUGGESTIONS = gql`
   query GetBettingSuggestions {
     bettingSuggestions {
-      matchId
-      homeTeam
-      awayTeam
-      prediction
+      fixture
+      predicted_outcome
       confidence
-      odds
-      reasoning
-      timestamp
+      over_under
+      over_under_confidence
     }
   }
 `;
@@ -44,27 +41,24 @@ const BettingSuggestions = () => {
         Betting Suggestions
       </Typography>
       <Grid container spacing={3}>
-        {data.bettingSuggestions.map((suggestion) => (
-          <Grid item xs={12} md={6} lg={4} key={suggestion.matchId}>
+        {data.bettingSuggestions.map((suggestion, idx) => (
+          <Grid item xs={12} md={6} lg={4} key={idx}>
             <Card>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
-                  {suggestion.homeTeam} vs {suggestion.awayTeam}
+                  {suggestion.fixture}
                 </Typography>
                 <Typography color="textSecondary" gutterBottom>
-                  Prediction: {suggestion.prediction}
+                  Prediction: {suggestion.predicted_outcome}
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Confidence: {suggestion.confidence}%
+                  Confidence: {(suggestion.confidence * 100).toFixed(1)}%
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Odds: {suggestion.odds}
+                  Over/Under 2.5: {suggestion.over_under}
                 </Typography>
-                <Typography variant="body2">
-                  Reasoning: {suggestion.reasoning}
-                </Typography>
-                <Typography variant="caption" color="textSecondary">
-                  Last updated: {new Date(suggestion.timestamp).toLocaleString()}
+                <Typography variant="body2" gutterBottom>
+                  O/U Confidence: {suggestion.over_under_confidence !== undefined ? (suggestion.over_under_confidence * 100).toFixed(1) + '%' : '-'}
                 </Typography>
               </CardContent>
             </Card>
