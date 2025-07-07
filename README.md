@@ -1,47 +1,82 @@
 # Betting Assistant Project
 
-The Betting Assistant project is a comprehensive application designed to provide users with betting suggestions, match data, and trend analysis. It consists of multiple services, each responsible for a specific aspect of the application, and is built using a variety of modern technologies.
+The Betting Assistant project is a modern application that provides users with football match predictions and betting suggestions, powered by machine learning. The system is designed for extensibility and integrates a React frontend, a GraphQL gateway, and a Python-based ML backend.
 
 ## Project Structure
 
-The project is organized into several directories, each containing a specific service:
+The project is organized into the following main directories:
 
-- **client/**: The frontend of the application built with React, Tailwind CSS, and Apollo Client.
-- **gateway/**: The GraphQL API Gateway implemented with Node.js and Apollo Server.
-- **recommendation-engine/**: A recommendation engine using Python and Flask to provide betting suggestions based on machine learning algorithms.
-- **match-data-service/**: A service written in Go that fetches and serves match statistics.
-- **trend-service/**: A trend analysis service implemented in Rust using Actix-web.
-- **user-pref-service/**: A user preference service built with Scala and Akka HTTP.
+- **client/**: The frontend application built with React, Tailwind CSS, and Apollo Client. It displays football predictions and betting suggestions in a user-friendly interface.
+- **gateway/**: The GraphQL API Gateway implemented with Node.js and Apollo Server. It acts as a single entry point for the frontend, aggregating data from the ML backend and other sources.
+- **ml/**: The machine learning backend, built with Python and FastAPI. It serves football match predictions (outcome and over/under 2.5 goals) via a REST API, and is integrated with the gateway.
+- **recommendation-engine/**: Contains the football stats agent and scraping logic for collecting and analyzing football data (fixtures, team form, H2H, etc.).
+
+> **Note:** Previous services for trend analysis, match data, and user preferences have been removed for simplicity and focus.
 
 ## Technologies Used
 
 - **Frontend**: React, Tailwind CSS, Apollo Client
 - **API Gateway**: Node.js, Apollo Server
-- **Recommendation Engine**: Python, Flask
-- **Match Data Service**: Go
-- **Trend Analysis Service**: Rust, Actix-web
-- **User Preference Service**: Scala, Akka HTTP
+- **ML Backend**: Python, FastAPI, scikit-learn, joblib
+- **Data Collection**: Playwright, BeautifulSoup (for scraping football stats)
 - **Containerization**: Docker, Docker Compose
+
+## Machine Learning Pipeline
+
+The ML backend predicts:
+- **Match Outcome**: Home Win, Draw, or Away Win
+- **Over/Under 2.5 Goals**: Whether the match will have more or fewer than 2.5 goals
+
+### Features Used for Prediction
+- Recent team form (wins, draws, losses)
+- Team strength proxies (goal difference, rolling averages)
+- Elo-like features (from historical data)
+- Match context (league importance, month, weekend)
+- Simple odds proxies (if available)
+- Rolling win rates and volatility
+
+> **Note:** Head-to-head (H2H) stats are collected and available, but not currently used as ML features by default.
+
+### How It Works
+1. The stats agent scrapes and analyzes upcoming fixtures.
+2. Features are extracted for each fixture.
+3. The trained ML model predicts outcomes and over/under goals, returning probabilities and confidence scores.
+4. Predictions are served via FastAPI and routed through the GraphQL gateway to the frontend.
 
 ## Getting Started
 
-To get started with the Betting Assistant project, follow these steps:
-
-1. Clone the repository:
+1. **Clone the repository:**
    ```
    git clone <repository-url>
    cd betting-assistant
    ```
 
-2. Set up the services:
-   - Navigate to each service directory and follow the instructions in their respective README files to install dependencies and run the services.
+2. **Set up the services:**
+   - Install dependencies for each service:
+     - `client/`: `npm install`
+     - `gateway/`: `npm install`
+     - `ml/`: `pip install -r requirements.txt`
+   - (Optional) Train or retrain the ML models in `ml/` if needed.
 
-3. Use Docker Compose to orchestrate the services:
-   ```
-   docker-compose up
-   ```
+3. **Run the services:**
+   - Start the ML backend:
+     ```
+     cd ml
+     uvicorn predict_fixtures:app --host 0.0.0.0 --port 8001
+     ```
+   - Start the GraphQL gateway:
+     ```
+     cd gateway
+     npm start
+     ```
+   - Start the frontend:
+     ```
+     cd client
+     npm start
+     ```
 
-4. Access the client application in your web browser at `http://localhost:3000`.
+4. **Access the application:**
+   - Open your browser at `http://localhost:3000` to use the Betting Assistant.
 
 ## Contributing
 
