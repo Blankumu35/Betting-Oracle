@@ -1,0 +1,74 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # ML Backend
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install ML dependencies
+        run: |
+          cd ml
+          pip install -r requirements.txt
+      - name: Lint ML code
+        run: |
+          cd ml
+          flake8 . || true
+
+      # Gateway
+      - name: Set up Node.js for Gateway
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install Gateway dependencies
+        run: |
+          cd gateway
+          npm install
+      - name: Lint Gateway code
+        run: |
+          cd gateway
+          npx eslint . || true
+
+      # Client
+      - name: Set up Node.js for Client
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install Client dependencies
+        run: |
+          cd client
+          npm install
+      - name: Build Client
+        run: |
+          cd client
+          npm run build
+
+      # Docker Compose Build
+      - name: Build all Docker images
+        run: docker-compose build
+
+      # Deploy to AWS EC2
+      - name: Deploy to AWS EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USER }}
+          key: ${{ secrets.AWS_KEY }}
+          port: ${{ secrets.AWS_PORT || 22 }}
+          script: |
+            cd betting-assistant
+            git pull
+            docker-compose down
+            docker-compose build
+            docker-compose up -d 
