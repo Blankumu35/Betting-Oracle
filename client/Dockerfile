@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:18 as build
 
 WORKDIR /app
 
@@ -6,9 +6,10 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
+RUN npm run build
 
-EXPOSE 3000
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
 
-ENV NODE_OPTIONS=--openssl-legacy-provider
-
-CMD ["npm", "start"] 
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"] 
