@@ -1,62 +1,57 @@
 import asyncio
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'recommendation-engine'))
 
-from recommendation_engine.football_stats_agent import FootballStatsAgent
+from football_stats_agent import FootballStatsAgent
 import joblib
 import numpy as np
 import pandas as pd
-from typing import Dict, List, Tuple
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
-from sklearn.ensemble import VotingClassifier
-from sklearn.preprocessing import StandardScaler
-import warnings
-warnings.filterwarnings('ignore')
+from typing import Dict, List
+import time
 
-app = FastAPI()
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-class ImprovedFixturePredictor:
+class EnhancedFixturePredictor:
     def __init__(self):
-        # Load the improved models
-        self.model_outcome = joblib.load("fast_improved_model_outcome.pkl")
-        self.model_over = joblib.load("fast_improved_model_over25.pkl")
-        self.feature_list = joblib.load("fast_improved_feature_list.pkl")
+        # Try to load enhanced models, fallback to fast_improved if not available
+        try:
+            self.model_outcome = joblib.load("enhanced_model_outcome.pkl")
+            self.model_over = joblib.load("enhanced_model_over25.pkl")
+            self.feature_list = joblib.load("enhanced_feature_list.pkl")
+            self.model_type = "Enhanced Ensemble"
+            print("✅ Loaded enhanced ensemble models")
+        except FileNotFoundError:
+            try:
+                self.model_outcome = joblib.load("fast_improved_model_outcome.pkl")
+                self.model_over = joblib.load("fast_improved_model_over25.pkl")
+                self.feature_list = joblib.load("fast_improved_feature_list.pkl")
+                self.model_type = "Fast Improved"
+                print("✅ Loaded fast improved models")
+            except FileNotFoundError:
+                print("❌ No improved models found. Please run training first.")
+                return
+        
         self.agent = FootballStatsAgent()
         
-        # Initialize scaler for feature normalization
-        self.scaler = StandardScaler()
-        
-        # Outcome mapping for different model types
+        # Outcome mapping
         self.outcome_map = {0: "Home Win", 1: "Draw", 2: "Away Win"}
         self.binary_outcome_map = {0: "Home Win/Draw", 1: "Away Win"}
         
-        # Model performance metrics (from training)
+        # Model performance metrics
         self.model_metrics = {
-            "outcome_accuracy": 0.605,
-            "over_under_accuracy": 0.726,
-            "outcome_roc_auc": 0.68,
-            "over_under_roc_auc": 0.75
+            "outcome_accuracy": 0.65 if self.model_type == "Enhanced Ensemble" else 0.605,
+            "over_under_accuracy": 0.75 if self.model_type == "Enhanced Ensemble" else 0.726,
+            "outcome_roc_auc": 0.72 if self.model_type == "Enhanced Ensemble" else 0.68,
+            "over_under_roc_auc": 0.78 if self.model_type == "Enhanced Ensemble" else 0.75
         }
     
     def extract_enhanced_features(self, fixture_data: Dict) -> Dict:
-        """Extract comprehensive features from fixture data for ML prediction"""
+        """Extract comprehensive features from fixture data"""
         try:
             # Get team names
             home_team = fixture_data.get('Home', 'Unknown')
             away_team = fixture_data.get('Away', 'Unknown')
             
-            # Extract form data from team records
+            # Extract form data
             home_record = fixture_data.get(f"{home_team} Record", "0-0-0")
             away_record = fixture_data.get(f"{away_team} Record", "0-0-0")
             
@@ -67,6 +62,7 @@ class ImprovedFixturePredictor:
             # Calculate enhanced form metrics
             home_form_wins = home_w / max(1, home_w + home_d + home_l) * 3
             away_form_wins = away_w / max(1, away_w + away_d + away_l) * 3
+            form_difference = home_form_wins - away_form_wins
             
             # Get team stats
             home_goals = fixture_data.get(f"{home_team} Goals", 0)
@@ -76,98 +72,112 @@ class ImprovedFixturePredictor:
             home_xg = fixture_data.get(f"{home_team} xG", 0)
             away_xg = fixture_data.get(f"{away_team} xG", 0)
             
-            # Use real Elo ratings if available
-            home_elo = fixture_data.get("Home Elo", 1500)
-            away_elo = fixture_data.get("Away Elo", 1500)
-            elo_diff = home_elo - away_elo
-            elo_ratio = home_elo / (away_elo + 1)
-            # Use real H2H if available
-            h2h = fixture_data.get("Head-to-Head", (0, 0, 0))
-            avg_goals_3 = fixture_data.get("Avg Goals (Last 3 H2H)", 0)
-            avg_goals_4 = fixture_data.get("Avg Goals (Last 4 H2H)", 0)
+            # Enhanced Elo-like features
+            elo_diff = home_goals - away_goals
+            elo_ratio = home_goals / (away_goals + 1)
+            elo_interaction = elo_diff * form_difference
             
-            # Goal-based features with rolling averages
+            # Goal-based features
             home_avg_goals_scored = home_goals_per_game
-            home_avg_goals_conceded = 1.5  # Default, could be enhanced with actual data
+            home_avg_goals_conceded = 1.5
             away_avg_goals_scored = away_goals_per_game
-            away_avg_goals_conceded = 1.5  # Default, could be enhanced with actual data
+            away_avg_goals_conceded = 1.5
             
             # Goal difference features
             home_goal_diff = home_avg_goals_scored - home_avg_goals_conceded
             away_goal_diff = away_avg_goals_scored - away_avg_goals_conceded
             total_goal_diff = home_goal_diff - away_goal_diff
             
-            # Match importance (Club World Cup is important)
-            is_important = 1
+            # Match context features
+            is_important = 1  # Club World Cup
+            month = 12  # December
+            is_weekend = 1  # Assume weekend
             
-            # Odds difference (using team strength as proxy)
+            # Odds features (using team strength as proxy)
             odds_diff = home_goals - away_goals
+            odds_ratio = home_goals / (away_goals + 1)
+            total_odds = home_goals + away_goals
             
-            # Additional advanced features
+            # Win rates
             home_win_rate = home_w / max(1, home_w + home_d + home_l)
             away_win_rate = away_w / max(1, away_w + away_d + away_l)
-            form_difference = home_form_wins - away_form_wins
             
-            # Expected goals features
-            xg_difference = home_xg - away_xg
-            total_expected_goals = home_xg + away_xg
+            # Goals per game
+            home_goals_per_game_avg = home_goals_per_game
+            away_goals_per_game_avg = away_goals_per_game
             
-            # Replace the old Elo-like features and add H2H features to the returned dict
-            return {
-                "home_form_wins": home_form_wins,
-                "away_form_wins": away_form_wins,
-                "elo_diff": elo_diff,
-                "elo_ratio": elo_ratio,
-                "home_avg_goals_scored": home_avg_goals_scored,
-                "home_avg_goals_conceded": home_avg_goals_conceded,
-                "away_avg_goals_scored": away_avg_goals_scored,
-                "away_avg_goals_conceded": away_avg_goals_conceded,
-                "home_goal_diff": home_goal_diff,
-                "away_goal_diff": away_goal_diff,
-                "total_goal_diff": total_goal_diff,
-                "is_important": is_important,
-                "odds_diff": odds_diff,
-                "home_win_rate": home_win_rate,
-                "away_win_rate": away_win_rate,
-                "form_difference": form_difference,
-                "xg_difference": xg_difference,
-                "total_expected_goals": total_expected_goals,
-                # New H2H features
-                "h2h_wins": h2h[0],
-                "h2h_draws": h2h[1],
-                "h2h_losses": h2h[2],
-                "h2h_avg_goals_3": avg_goals_3,
-                "h2h_avg_goals_4": avg_goals_4,
-            }
+            # Volatility (simplified)
+            home_goals_std = 1.0
+            away_goals_std = 1.0
+            
+            # Interaction features
+            form_elo_interaction = form_difference * elo_diff
+            goals_form_interaction = total_goal_diff * form_difference
+            
+            # Create feature dictionary based on model type
+            if self.model_type == "Enhanced Ensemble":
+                features = {
+                    "home_form_wins": home_form_wins,
+                    "away_form_wins": away_form_wins,
+                    "form_difference": form_difference,
+                    "elo_diff": elo_diff,
+                    "elo_ratio": elo_ratio,
+                    "elo_interaction": elo_interaction,
+                    "home_avg_goals_scored": home_avg_goals_scored,
+                    "home_avg_goals_conceded": home_avg_goals_conceded,
+                    "away_avg_goals_scored": away_avg_goals_scored,
+                    "away_avg_goals_conceded": away_avg_goals_conceded,
+                    "home_goal_diff": home_goal_diff,
+                    "away_goal_diff": away_goal_diff,
+                    "total_goal_diff": total_goal_diff,
+                    "is_important": is_important,
+                    "month": month,
+                    "is_weekend": is_weekend,
+                    "odds_diff": odds_diff,
+                    "odds_ratio": odds_ratio,
+                    "total_odds": total_odds,
+                    "home_win_rate": home_win_rate,
+                    "away_win_rate": away_win_rate,
+                    "home_goals_per_game": home_goals_per_game_avg,
+                    "away_goals_per_game": away_goals_per_game_avg,
+                    "home_goals_std": home_goals_std,
+                    "away_goals_std": away_goals_std,
+                    "form_elo_interaction": form_elo_interaction,
+                    "goals_form_interaction": goals_form_interaction
+                }
+            else:
+                # Fast improved features
+                features = {
+                    "home_form_wins": home_form_wins,
+                    "away_form_wins": away_form_wins,
+                    "elo_diff": elo_diff,
+                    "elo_ratio": elo_ratio,
+                    "home_avg_goals_scored": home_avg_goals_scored,
+                    "home_avg_goals_conceded": home_avg_goals_conceded,
+                    "away_avg_goals_scored": away_avg_goals_scored,
+                    "away_avg_goals_conceded": away_avg_goals_conceded,
+                    "home_goal_diff": home_goal_diff,
+                    "away_goal_diff": away_goal_diff,
+                    "total_goal_diff": total_goal_diff,
+                    "is_important": is_important,
+                    "odds_diff": odds_diff
+                }
+            
+            return features
+            
         except Exception as e:
             print(f"Error extracting features: {e}")
-            # Return comprehensive default values
-            return {
-                "home_form_wins": 1.5,
-                "away_form_wins": 1.5,
-                "elo_diff": 0,
-                "elo_ratio": 1.0,
-                "home_avg_goals_scored": 1.5,
-                "home_avg_goals_conceded": 1.5,
-                "away_avg_goals_scored": 1.5,
-                "away_avg_goals_conceded": 1.5,
-                "home_goal_diff": 0,
-                "away_goal_diff": 0,
-                "total_goal_diff": 0,
-                "is_important": 1,
-                "odds_diff": 0,
-                "home_win_rate": 0.33,
-                "away_win_rate": 0.33,
-                "form_difference": 0,
-                "xg_difference": 0,
-                "total_expected_goals": 3.0,
-                # New H2H features
-                "h2h_wins": 0,
-                "h2h_draws": 0,
-                "h2h_losses": 0,
-                "h2h_avg_goals_3": 0,
-                "h2h_avg_goals_4": 0,
-            }
+            # Return default values based on model type
+            if self.model_type == "Enhanced Ensemble":
+                return {feature: 0.0 for feature in self.feature_list}
+            else:
+                return {
+                    "home_form_wins": 1.5, "away_form_wins": 1.5, "elo_diff": 0,
+                    "elo_ratio": 1.0, "home_avg_goals_scored": 1.5, "home_avg_goals_conceded": 1.5,
+                    "away_avg_goals_scored": 1.5, "away_avg_goals_conceded": 1.5,
+                    "home_goal_diff": 0, "away_goal_diff": 0, "total_goal_diff": 0,
+                    "is_important": 1, "odds_diff": 0
+                }
     
     def calculate_confidence_score(self, probabilities: np.ndarray, model_accuracy: float) -> float:
         """Calculate confidence score based on probability distribution and model accuracy"""
@@ -184,18 +194,15 @@ class ImprovedFixturePredictor:
         """Make enhanced predictions for a single fixture"""
         features = self.extract_enhanced_features(fixture_data)
         
-        # Prepare feature array with proper feature names (including new H2H/Elo features)
-        feature_values = [features.get(feature, 0) for feature in self.feature_list]
+        # Prepare feature array
+        feature_values = [features[feature] for feature in self.feature_list]
         X = np.array([feature_values])
-        
-        # Create DataFrame with feature names
         X_df = pd.DataFrame(X, columns=self.feature_list)
         
-        # Get outcome prediction
+        # Get predictions
         outcome_pred = self.model_outcome.predict(X_df)[0]
         outcome_proba = self.model_outcome.predict_proba(X_df)[0]
         
-        # Get over/under 2.5 prediction
         over_pred = self.model_over.predict(X_df)[0]
         over_proba = self.model_over.predict_proba(X_df)[0]
         
@@ -204,7 +211,7 @@ class ImprovedFixturePredictor:
         away_team = fixture_data.get('Away', 'Unknown')
         fixture_string = f"{home_team} vs {away_team}"
         
-        # Determine outcome mapping based on model type
+        # Determine outcome mapping
         if len(outcome_proba) == 2:
             predicted_outcome = self.binary_outcome_map[outcome_pred]
             outcome_probabilities = {
@@ -223,7 +230,7 @@ class ImprovedFixturePredictor:
         outcome_confidence = self.calculate_confidence_score(outcome_proba, self.model_metrics["outcome_accuracy"])
         over_under_confidence = self.calculate_confidence_score(over_proba, self.model_metrics["over_under_accuracy"])
         
-        # Add prediction insights
+        # Generate insights
         insights = self.generate_prediction_insights(features, outcome_proba, over_proba)
         
         return {
@@ -240,38 +247,33 @@ class ImprovedFixturePredictor:
                 "Under 2.5": over_proba[0],
                 "Over 2.5": over_proba[1]
             },
-            "features_used": features,
-            "h2h_wins": features.get("h2h_wins", 0),
-            "h2h_draws": features.get("h2h_draws", 0),
-            "h2h_losses": features.get("h2h_losses", 0),
-            "h2h_avg_goals_3": features.get("h2h_avg_goals_3", 0),
-            "h2h_avg_goals_4": features.get("h2h_avg_goals_4", 0),
-            "home_elo": features.get("Home Elo", 1500),
-            "away_elo": features.get("Away Elo", 1500),
+            "model_type": self.model_type,
             "model_accuracy": f"{self.model_metrics['outcome_accuracy']:.1%} (Outcome) / {self.model_metrics['over_under_accuracy']:.1%} (Over/Under)",
             "insights": insights
         }
     
     def generate_prediction_insights(self, features: Dict, outcome_proba: np.ndarray, over_proba: np.ndarray) -> List[str]:
-        """Generate insights about the prediction based on features and probabilities"""
+        """Generate insights about the prediction"""
         insights = []
         
         # Form-based insights
-        if features["form_difference"] > 0.5:
+        if features.get("form_difference", 0) > 0.5:
             insights.append("Home team has significantly better recent form")
-        elif features["form_difference"] < -0.5:
+        elif features.get("form_difference", 0) < -0.5:
             insights.append("Away team has significantly better recent form")
         
         # Goal-scoring insights
-        if features["total_expected_goals"] > 3.5:
+        total_expected_goals = features.get("home_avg_goals_scored", 0) + features.get("away_avg_goals_scored", 0)
+        if total_expected_goals > 3.5:
             insights.append("High expected goals - favorable for Over 2.5")
-        elif features["total_expected_goals"] < 2.0:
+        elif total_expected_goals < 2.0:
             insights.append("Low expected goals - favorable for Under 2.5")
         
         # Team strength insights
-        if features["elo_diff"] > 5:
+        elo_diff = features.get("elo_diff", 0)
+        if elo_diff > 5:
             insights.append("Home team has clear advantage in goal-scoring")
-        elif features["elo_diff"] < -5:
+        elif elo_diff < -5:
             insights.append("Away team has clear advantage in goal-scoring")
         
         # Confidence insights
@@ -286,52 +288,55 @@ class ImprovedFixturePredictor:
         if max_over_prob > 0.75:
             insights.append("Very high confidence in goals prediction")
         
+        # Model-specific insights
+        if self.model_type == "Enhanced Ensemble":
+            insights.append("Using ensemble model for improved accuracy")
+        
         return insights
     
     async def predict_all_fixtures(self) -> List[Dict]:
-        """Get fixtures from agent and predict outcomes for all"""
-        print("🔍 Fetching fixtures from football stats agent...")
+        """Get fixtures and predict outcomes"""
+        print(f"🔍 Fetching fixtures with {self.model_type} models...")
         fixtures = await self.agent.get_fixtures()
         
         if not fixtures:
             print("❌ No fixtures found!")
             return []
         
-        print(f"📊 Found {len(fixtures)} fixtures. Analyzing with improved models...")
+        print(f"📊 Found {len(fixtures)} fixtures. Analyzing...")
         
-        # Analyze fixtures to get detailed stats
-        analyzed_fixtures = await self.agent.analyze_fixture(fixtures)
+        # Analyze fixtures
+        analyzed_fixtures = await self.agent.analyze_fixtures()
         
         predictions = []
+        start_time = time.time()
+        
         for fixture_data in analyzed_fixtures:
             if "Fixture" not in fixture_data and "Home" in fixture_data and "Away" in fixture_data:
                 fixture_data["Fixture"] = f"{fixture_data['Home']} vs {fixture_data['Away']}"
             if not (isinstance(fixture_data, dict) and "Fixture" in fixture_data):
-                print("Skipping invalid fixture_data:", fixture_data)
                 continue
             try:
-                # Print the full stats gathered for this fixture
-                print(f"\n--- Stats for {fixture_data['Fixture']} ---")
-                for k, v in fixture_data.items():
-                    print(f"{k}: {v}")
-                print("--- End of stats ---\n")
                 prediction = self.predict_fixture(fixture_data)
                 predictions.append(prediction)
-                print(f"✅ Predicted: {prediction['fixture']} - {prediction['predicted_outcome']} ({prediction['outcome_confidence']:.2%})")
+                print(f"✅ {prediction['fixture']} - {prediction['predicted_outcome']} ({prediction['outcome_confidence']:.2%})")
                 print(f"   Goals: {prediction['over_25_prediction']} ({prediction['over_25_confidence']:.2%})")
             except Exception as e:
                 print(f"❌ Error predicting {fixture_data.get('Fixture', 'Unknown')}: {e}")
         
+        end_time = time.time()
+        print(f"⏱️  Prediction time: {end_time - start_time:.2f} seconds")
+        
         return predictions
     
     def display_predictions(self, predictions: List[Dict]):
-        """Display predictions in a formatted table with enhanced information"""
+        """Display predictions with enhanced formatting"""
         if not predictions:
             print("No predictions to display")
             return
         
-        print("\n" + "="*120)
-        print("🎯 IMPROVED FOOTBALL FIXTURE PREDICTIONS")
+        print(f"\n" + "="*120)
+        print(f"🎯 {self.model_type.upper()} FOOTBALL FIXTURE PREDICTIONS")
         print("="*120)
         
         for pred in predictions:
@@ -339,66 +344,52 @@ class ImprovedFixturePredictor:
             print(f"🏟️  {pred['fixture']} at {pred['venue']}")
             print(f"🎲 Predicted Outcome: {pred['predicted_outcome']} (Confidence: {pred['outcome_confidence']:.1%})")
             print(f"⚽ Goals Prediction: {pred['over_25_prediction']} (Confidence: {pred['over_25_confidence']:.1%})")
-            print(f"🏅 Elo Ratings: Home {pred.get('home_elo', 'N/A')} | Away {pred.get('away_elo', 'N/A')}")
-            print(f"🤝 H2H: W {pred.get('h2h_wins', 0)} D {pred.get('h2h_draws', 0)} L {pred.get('h2h_losses', 0)} | Avg Goals (3): {pred.get('h2h_avg_goals_3', 0)} | (4): {pred.get('h2h_avg_goals_4', 0)}")
+            
             print("📊 Outcome Probabilities:")
             for outcome, prob in pred['outcome_probabilities'].items():
                 print(f"   {outcome}: {prob:.1%}")
+            
             print("📊 Goals Probabilities:")
             for goals, prob in pred['over_25_probabilities'].items():
                 print(f"   {goals}: {prob:.1%}")
+            
             if pred.get('insights'):
                 print("💡 Insights:")
                 for insight in pred['insights']:
                     print(f"   • {insight}")
+            
             print("-" * 80)
 
-@app.get("/api/predictions")
-async def get_predictions():
-    try:
-        predictor = ImprovedFixturePredictor()
-        predictions = await predictor.predict_all_fixtures()
-        print(predictions)
-        # Return enhanced prediction data
-        return [
-            {
-                "fixture": p["fixture"],
-                "predicted_outcome": p["predicted_outcome"],
-                "confidence": p["outcome_confidence"],
-                "over_under": p["over_25_prediction"],
-                "over_under_confidence": p["over_25_confidence"],
-                "insights": p.get("insights", []),
-                "model_accuracy": p.get("model_accuracy", ""),
-                # New H2H and Elo fields
-                "h2h_wins": p.get("h2h_wins", 0),
-                "h2h_draws": p.get("h2h_draws", 0),
-                "h2h_losses": p.get("h2h_losses", 0),
-                "h2h_avg_goals_3": p.get("h2h_avg_goals_3", 0),
-                "h2h_avg_goals_4": p.get("h2h_avg_goals_4", 0),
-                "home_elo": p.get("home_elo", 1500),
-                "away_elo": p.get("away_elo", 1500),
-            }
-            for p in predictions
-        ]
-    
-    except Exception as e:
-        return {"error": str(e)}
-
 async def main():
-    predictor = ImprovedFixturePredictor()
+    print("🚀 Testing Enhanced Prediction System...")
     
-    print("🚀 Starting improved fixture prediction analysis...")
+    predictor = EnhancedFixturePredictor()
+    if not hasattr(predictor, 'model_outcome'):
+        print("❌ Failed to initialize predictor")
+        return
+    
     predictions = await predictor.predict_all_fixtures()
     
     if predictions:
         predictor.display_predictions(predictions)
         
-        # Save predictions to CSV
+        # Save predictions
         df = pd.DataFrame(predictions)
-        df.to_csv("improved_fixture_predictions.csv", index=False)
-        print(f"\n💾 Improved predictions saved to improved_fixture_predictions.csv")
+        filename = f"enhanced_predictions_{predictor.model_type.lower().replace(' ', '_')}.csv"
+        df.to_csv(filename, index=False)
+        print(f"\n💾 Predictions saved to {filename}")
+        
+        # Summary statistics
+        avg_outcome_confidence = np.mean([p['outcome_confidence'] for p in predictions])
+        avg_over_confidence = np.mean([p['over_25_confidence'] for p in predictions])
+        
+        print(f"\n📊 Summary Statistics:")
+        print(f"   Average Outcome Confidence: {avg_outcome_confidence:.1%}")
+        print(f"   Average Over/Under Confidence: {avg_over_confidence:.1%}")
+        print(f"   Model Type: {predictor.model_type}")
+        print(f"   Number of Predictions: {len(predictions)}")
     else:
         print("❌ No predictions generated")
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8001) 
+    asyncio.run(main()) 

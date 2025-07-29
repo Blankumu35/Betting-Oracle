@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   ml:
-    build: ./ml
+    build:
+      context: .
+      dockerfile: ml/Dockerfile
     ports:
       - "8001:8001"
     restart: unless-stopped

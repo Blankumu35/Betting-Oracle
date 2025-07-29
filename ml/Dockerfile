@@ -2,10 +2,20 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY requirements.txt ./
+# Install build tools and system libraries for scientific Python packages
+RUN apt-get update && apt-get install -y gcc g++ build-essential libglib2.0-0 libsm6 libxext6 libxrender-dev && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip, setuptools, and wheel for better compatibility
+RUN pip install --upgrade pip setuptools wheel
+
+COPY ml/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY ml/. .
+COPY recommendation_engine/ ./recommendation_engine/
+
+# Install dependencies for recommendation_engine
+RUN pip install --no-cache-dir -r recommendation_engine/requirements.txt
 
 EXPOSE 8001
 

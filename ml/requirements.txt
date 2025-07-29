@@ -1,8 +1,9 @@
+joblib
+numpy
+pandas
 fastapi
 uvicorn
 scikit-learn
-pandas
-numpy
-joblib
-python-multipart
-requests 
+aiohttp
+beautifulsoup4
+playwright 

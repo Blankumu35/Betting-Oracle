@@ -9,6 +9,8 @@ class BettingAPI extends RESTDataSource {
   async getSuggestions() {
     try {
       const response = await this.get('/api/predictions');
+      console.log('Raw prediction response:', response);
+
       return response.map(suggestion => ({
         fixture: suggestion.fixture,
         predicted_outcome: suggestion.predicted_outcome,

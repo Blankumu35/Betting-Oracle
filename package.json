@@ -1,0 +1,27 @@
+{
+  "name": "betting-assistant",
+  "version": "1.0.0",
+  "description": "The Betting Assistant project is a microservices-based application designed to facilitate betting operations. It consists of multiple services, each responsible for a specific aspect of the betting process. This document provides an overview of the project structure, services, and setup instructions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/client": "^3.13.8",
+    "graphql": "^16.11.0",
+    "pnpm": "^10.11.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^4.1.8",
+    "typescript": "^5.8.3"
+  }
+}

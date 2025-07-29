@@ -1,0 +1,305 @@
+{
+  "timestamp": "2025-07-29T21:02:53.669492",
+  "fixtures": [
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "FC Krasnodar",
+      "Score": "1-2",
+      "Away": "Krylya Sovetov Samara",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/fc-krasnodar/krylya-sovetov-samara/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Dynamo Kyiv",
+      "Score": "2-0",
+      "Away": "Hamrun Spartans",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/dynamo-kyiv/hamrun-spartans/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Drita",
+      "Score": "0-1",
+      "Away": "FC K\u00f8benhavn",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/drita1/fc-copenhagen/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Thor Akureyri",
+      "Score": "0-0",
+      "Away": "Grindavik",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/grindavik/thor-akureyri/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Bromsgrove Sporting",
+      "Score": "4-0",
+      "Away": "Solihull Moors",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/bromsgrove-sporting/solihull-moors/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "FC Differdange 03",
+      "Score": "0-0",
+      "Away": "TNS",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/fc-differdange-03/tns/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Wingate & Finchley",
+      "Score": "0-0",
+      "Away": "Boreham Wood",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/boreham-wood/wingate-finchley/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Matlock Town",
+      "Score": "1-0",
+      "Away": "Mansfield",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/mansfield/matlock-town/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Inter Club d'Escaldes",
+      "Score": "0-0",
+      "Away": "Olimpija Ljubljana",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/inter-club-descaldes/olimpija-ljubljana/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Barnet",
+      "Score": "0-0",
+      "Away": "Newport",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/barnet/newport/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Braintree Town",
+      "Score": "0-0",
+      "Away": "Colchester",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/braintree-town/colchester/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Altrincham",
+      "Score": "0-0",
+      "Away": "Port Vale",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/altrincham/port-vale/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Sutton United",
+      "Score": "0-0",
+      "Away": "Millwall",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/millwall/sutton-united/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Valencia",
+      "Score": "0-0",
+      "Away": "Marseille",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/marseille/valencia/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "East Stirlingshire",
+      "Score": "0-0",
+      "Away": "Albion Rovers",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/albion-rovers/east-stirlingshire/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Cowdenbeath",
+      "Score": "0-0",
+      "Away": "Bo'ness United",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/boness-united/cowdenbeath/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Civil Service Strollers",
+      "Score": "0-0",
+      "Away": "Celtic B",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/celtic-b/civil-service-strollers/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Tranent Juniors",
+      "Score": "0-0",
+      "Away": "Berwick",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/berwick/tranent-juniors/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Cumbernauld Colts",
+      "Score": "0-0",
+      "Away": "Clydebank",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/clydebank/cumbernauld-colts/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Saburtalo",
+      "Score": "2-2",
+      "Away": "Levadia Maardu",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/levadia-maardu/saburtalo/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Al-Akhdar",
+      "Score": "0-0",
+      "Away": "Al Ahli Tripoli",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/al_ahli_tripoli/alakhdar/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Al-Ittihad",
+      "Score": "3-2",
+      "Away": "Asswehly",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/alittihad/asswehly/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Al Ahli Benghazi",
+      "Score": "1-2",
+      "Away": "Al Hilal",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/al_ahli_benghazi/al_hilal/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Sholing",
+      "Score": "-",
+      "Away": "Aldershot",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/aldershot/sholing/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Broxburn Athletic",
+      "Score": "-",
+      "Away": "Edusport Academy",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/broxburn_athletic/edusport-academy/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "FK Crvena zvezda",
+      "Score": "-",
+      "Away": "Lincoln Red Imps FC",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/fk-crvena-zvezda/lincoln-red-imps-fc/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "General Caballero JLM",
+      "Score": "-",
+      "Away": "Sportivo Trinidense",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/general-caballero-jlm/sportivo-trinidense/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Leiknir Reykjavik",
+      "Score": "-",
+      "Away": "Keflavik",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/keflavik/leiknir-reykjavik/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Njardvik",
+      "Score": "-",
+      "Away": "HK Kopavogs",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/hk-kopavogs/njardvik/"
+    },
+    {
+      "Date": "",
+      "Time": "",
+      "Home": "Throttur Reykjav\u00edk",
+      "Score": "-",
+      "Away": "Fylkir",
+      "League": "",
+      "Venue": "",
+      "H2H_URL": "https://www.fctables.com/h2h/fylkir/throttur-reykjavik/"
+    }
+  ]
+}
