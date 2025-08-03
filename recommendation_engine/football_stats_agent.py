@@ -228,15 +228,15 @@ class FootballStatsAgent:
         return 1500  # Default Elo if not found
 
  
-    async def analyze_fixture(self, fixtures: Dict) -> Dict:
-
+    async def analyze_fixture(self, fixtures: List[Dict]) -> List[Dict]:
+        results = []
         for fixture in fixtures:
             try:
                 home = fixture['Home']
                 away = fixture['Away']
                 logger.info(f"\nAnalyzing {home} vs {away}")
 
-            # --- Use H2H_URL directly ---
+                # --- Use H2H_URL directly ---
                 try:
                     h2h_url = fixture.get("H2H_URL", "")
                     if h2h_url:
@@ -245,9 +245,9 @@ class FootballStatsAgent:
                         raise ValueError("Missing H2H_URL")
                 except Exception as e:
                     logger.error(f"H2H fetch failed for {home} vs {away}: {e}")
-                    h2h = {"W-D-L": (0, 0, 0), "Avg goals last 3": 0, "Avg goals last 4": 0}
+                    h2h = {}
 
-                  # --- Elo Ratings ---
+                # --- Elo Ratings ---
                 try:
                     home_elo = await self.get_team_elo_rating(home)
                 except Exception as e:
@@ -260,29 +260,22 @@ class FootballStatsAgent:
                     logger.error(f"Away Elo fetch failed for {away}: {e}")
                     away_elo = 1500
 
-            # --- Build result ---
+                # --- Build result ---
                 result = {
-                    "Date": fixture['Date'],
-                    "Time": fixture['Time'],
                     "Fixture": f"{home} vs {away}",
-                    "Venue": fixture['Venue'],
-                    "Head-to-Head": h2h.get("W-D-L", (0, 0, 0)),
-                    "Avg Goals (Last 3 H2H)": h2h.get("Avg goals last 3", 0),
-                    "Avg Goals (Last 4 H2H)": h2h.get("Avg goals last 4", 0),
-                    "HomeStats": h2h.get(home, {}),
-                    "AwayStats": h2h.get(away, {}),
+                    "Home": home,
+                    "Away": away,
+                    **self.flatten_team_stats(h2h.get(home, {}), "Home_"),
+                    **self.flatten_team_stats(h2h.get(away, {}), "Away_"),
                 }
 
                 logger.info(f"Analysis complete for {home} vs {away}")
-                print(f"\n[DEBUG] analyze_fixture result for {home} vs {away}:")
-                for k, v in result.items():
-                    print(f"{k}: {v}")
-                print("[END DEBUG]\n")
-                return result
+                results.append(result)
 
             except Exception as e:
-                logger.error(f"Failed to analyze {fixture['Home']} vs {fixture['Away']}: {str(e)}")
-                return {}
+                logger.error(f"Failed to analyze {fixture.get('Home', '')} vs {fixture.get('Away', '')}: {str(e)}")
+                results.append({})
+        return results
 
     def extract_team_stats_from_h2h(self, soup: BeautifulSoup) -> Dict:
         """Extract home and away team stats from fctables H2H page soup (using divs, not tables)"""
@@ -354,6 +347,45 @@ class FootballStatsAgent:
                 stats[away_team][stat_name] = away_val
 
         return stats
+    def extract_enhanced_features(self, fixture_data: Dict) -> Dict:
+    # Example extraction
+        home_form = fixture_data.get("Home_Form", "")
+        away_form = fixture_data.get("Away_Form", "")
+        home_goals_last6 = float(fixture_data.get("Home_Last6_Goals", 0))
+        away_goals_last6 = float(fixture_data.get("Away_Last6_Goals", 0))
+        home_goals_overall = float(fixture_data.get("Home_Overall_Goals", 0))
+        away_goals_overall = float(fixture_data.get("Away_Overall_Goals", 0))
+        # ...extract other features as needed...
+
+        # Use these features for ML
+        return {
+            "home_form": home_form,
+            "away_form": away_form,
+            "home_goals_last6": home_goals_last6,
+            "away_goals_last6": away_goals_last6,
+            "home_goals_overall": home_goals_overall,
+            "away_goals_overall": away_goals_overall,
+            # ...add more features for your model...
+        }
+    
+    def flatten_team_stats(self, team_stats: Dict, prefix: str = "") -> Dict:
+        flat = {}
+        # Recent form as string
+        flat[f"{prefix}Form"] = "".join(team_stats.get("Form", []))
+        # Last 6 stats
+        for k, v in team_stats.get("Last6Stats", {}).items():
+            flat[f"{prefix}Last6_{k}"] = v
+        # Overall stats
+        for k, v in team_stats.get("OverallStats", {}).items():
+            # Convert percentage strings to decimal (e.g. '50.0%' -> 0.5)
+            if isinstance(v, str) and v.endswith('%'):
+                try:
+                    flat[f"{prefix}Overall_{k}"] = float(v.replace('%', '')) / 100.0
+                except ValueError:
+                    flat[f"{prefix}Overall_{k}"] = 0.0
+            else:
+                flat[f"{prefix}Overall_{k}"] = v
+        return flat
         
 
 async def main():
@@ -362,8 +394,6 @@ async def main():
     agent.clear_cache()
     results = await agent.analyze_fixture(await agent.get_fixtures())
     df = pd.DataFrame(results)
-    print("\n📊 Football Statistics Analysis")
-    print("=" * 80)
     print(df.to_string(index=False))
 
 if __name__ == "__main__":
