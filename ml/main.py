@@ -1,29 +1,64 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
-import joblib
-import numpy as np
+from contextlib import asynccontextmanager
+import pandas as pd
+import uvicorn
 
-app = FastAPI()
-model_outcome = joblib.load("model_outcome.pkl")
-model_over = joblib.load("model_over25.pkl")
-feature_list = joblib.load("feature_list.pkl")
+from predict_fixtures import ImprovedFixturePredictor
 
-class MatchRequest(BaseModel):
-    home_form_wins: float
-    away_form_wins: float
-    elo_diff: float
 
-@app.post("/predict/outcome")
-def predict_outcome(req: MatchRequest):
-    X = np.array([[req.home_form_wins, req.away_form_wins, req.elo_diff]])
-    pred = model_outcome.predict(X)[0]
-    proba = model_outcome.predict_proba(X)[0].tolist()
-    outcome_map = {0:"home_win",1:"draw",2:"away_win"}
-    return {"prediction": outcome_map[pred], "confidence": max(proba), "probabilities": proba}
+# Lifespan context manager
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    predictor = ImprovedFixturePredictor()
 
-@app.post("/predict/over25")
-def predict_over(req: MatchRequest):
-    X = np.array([[req.home_form_wins, req.away_form_wins, req.elo_diff]])
-    pred = model_over.predict(X)[0]
-    proba = model_over.predict_proba(X)[0].tolist()
-    return {"prediction": bool(pred), "confidence": max(proba), "probabilities": proba} 
+    print("🚀 Running predictions at startup...")
+    predictions = await predictor.predict_all_fixtures()
+
+    if predictions:
+        predictor.display_predictions(predictions)
+
+        # Save predictions to CSV
+        df = pd.DataFrame(predictions)
+        df.to_csv("improved_fixture_predictions.csv", index=False)
+        print("💾 Predictions saved to improved_fixture_predictions.csv")
+    else:
+        print("❌ No predictions generated")
+
+    # Yield control to the application
+    yield
+
+    # (Optional) Shutdown tasks can go here
+    print("🛑 Server shutting down...")
+
+
+# Initialize app with lifespan
+app = FastAPI(lifespan=lifespan)
+
+
+@app.get("/api/predictions")
+async def get_predictions():
+    try:
+        predictor = ImprovedFixturePredictor()
+        predictions = await predictor.predict_all_fixtures()
+
+        return [
+            {
+                "fixture": p["fixture"],
+                "predicted_outcome": p["predicted_outcome"],
+                "confidence": p["outcome_confidence"],
+                "over_under": p["over_25_prediction"],
+                "over_under_confidence": p["over_25_confidence"],
+                "insights": p.get("insights", []),
+                "model_accuracy": p.get("model_accuracy", ""),
+                "h2h_wins": p.get("h2h_wins", 0),
+                "h2h_draws": p.get("h2h_draws", 0),
+                "h2h_losses": p.get("h2h_losses", 0),
+            }
+            for p in predictions
+        ]
+    except Exception as e:
+        return {"error": str(e)}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8001)

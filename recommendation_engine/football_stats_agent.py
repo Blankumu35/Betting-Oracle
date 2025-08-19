@@ -114,6 +114,102 @@ class FootballStatsAgent:
         except Exception as e:
             logger.error(f"Error saving to cache: {str(e)}")
 
+    async def training_fixtures(self) -> List[Dict]:
+        """Scrape fixtures and include parsed H2H stats directly instead of just the link.
+           Only keep fixtures that are finished."""
+        
+        logger.info("Fetching fresh fixtures from fctables.com/ for training...")
+        try:
+            options = Options()
+            options.headless = True
+            driver = webdriver.Chrome(options=options)
+            driver.get("https://www.fctables.com/")
+
+            WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.ID, "live-games-box"))
+            )
+
+            time.sleep(2)  # Allow extra JS content to load
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            driver.quit()
+
+            fixtures = []
+            live_games = soup.find("div", {"id": "live-games-box"})
+            if not live_games:
+                logger.warning("No live games found on fctables.com/")
+                return []
+
+            game_divs = live_games.find_all("div", class_="live-game")
+            for game in game_divs:
+                try:
+                    home = game.select_one(".home a").text.strip()
+                    away = game.select_one(".away a").text.strip()
+                    score = game.select_one(".score strong").text.strip() if game.select_one(".score strong") else ''
+                    status = game.select_one(".min > .status").text.strip()
+                    league = game.select_one(".n a").text.strip()
+
+
+
+                    # Skip if score suggests match is not finished
+                    if score == '-' or any(tag in status.upper() for tag in ["HT", "LIVE", "'", "ET", "PEN", "1H", "2H"]):
+                        logger.info(f"Skipping unfinished fixture: {home} vs {away} ({score})")
+                        continue
+
+                    h2h_url = game.select_one("a.btn-info")
+                    h2h_url = h2h_url["href"] if h2h_url else None
+                    if h2h_url and not h2h_url.startswith("http"):
+                        h2h_url = "https://www.fctables.com" + h2h_url
+                        print(f"Fetching H2H stats from {h2h_url}")
+
+
+                    chrome_options = Options()
+                    options.headless = True
+                    driver = webdriver.Chrome(options=chrome_options)
+
+                    # Fetch and parse H2H page
+                    h2h_stats = {}
+                    if h2h_url:
+                        driver.get(h2h_url)
+                        try:
+                            WebDriverWait(driver, 10).until(
+                                EC.presence_of_element_located((By.ID, "team-profile-stats"))
+                            )
+                        except Exception as e:
+                            logger.warning(f"H2H table not found for {h2h_url}: {e}")
+                        time.sleep(2)
+                        h2h_html = driver.page_source
+                        h2h_soup = BeautifulSoup(h2h_html, 'html.parser')
+                        h2h_stats = self.extract_team_stats_from_h2h_training(h2h_soup)
+                    driver.quit()
+                    
+                    fixture = {
+                        'Home': home,
+                        'Score': score,
+                        'Away': away,
+                        'League': league,
+                        'Form': h2h_stats
+                    }
+                    fixtures.append(fixture)
+                    logger.info(f"Added finished fixture: {fixture}")
+                except Exception as e:
+                    logger.error(f"Error processing a game: {e}")
+                    continue
+
+            if not fixtures:
+                logger.warning("No finished fixtures found.")
+                return []
+
+            self.save_fixtures_to_cache(fixtures)
+            df = pd.DataFrame(fixtures)
+            df.to_csv("training_fixtures_with_stats.csv", index=False)
+
+            return fixtures
+
+        except Exception as e:
+            logger.error(f"Failed to fetch training fixtures: {e}")
+            return []
+
+ 
     async def get_fixtures(self) -> List[Dict]:
         """Scrape fixtures from fctables.com/livescore/ using Playwright or load from cache"""
         cached_fixtures, cache_valid = self.load_cached_fixtures()
@@ -347,26 +443,63 @@ class FootballStatsAgent:
                 stats[away_team][stat_name] = away_val
 
         return stats
-    def extract_enhanced_features(self, fixture_data: Dict) -> Dict:
-    # Example extraction
-        home_form = fixture_data.get("Home_Form", "")
-        away_form = fixture_data.get("Away_Form", "")
-        home_goals_last6 = float(fixture_data.get("Home_Last6_Goals", 0))
-        away_goals_last6 = float(fixture_data.get("Away_Last6_Goals", 0))
-        home_goals_overall = float(fixture_data.get("Home_Overall_Goals", 0))
-        away_goals_overall = float(fixture_data.get("Away_Overall_Goals", 0))
-        # ...extract other features as needed...
+    
 
-        # Use these features for ML
-        return {
-            "home_form": home_form,
-            "away_form": away_form,
-            "home_goals_last6": home_goals_last6,
-            "away_goals_last6": away_goals_last6,
-            "home_goals_overall": home_goals_overall,
-            "away_goals_overall": away_goals_overall,
-            # ...add more features for your model...
-        }
+    def extract_team_stats_from_h2h_training(self, soup: BeautifulSoup) -> Dict:
+        """Extract home and away team stats from fctables H2H page soup (with W/D/L counts in Last6Stats)."""
+        team_blocks = soup.find_all("div", class_="col-sm-6 col-md-12")
+        stats = {}
+
+        for idx, block in enumerate(team_blocks[:2]):  # Only first two blocks
+            # Team name
+            name_tag = block.find("span", itemprop="name")
+            team_name = name_tag.get_text(strip=True) if name_tag else f"Team{idx+1}"
+
+            # Form (W/D/L)
+            form_labels = block.select("div.form-box span div.label")
+            form = [label.get_text(strip=True) for label in form_labels]
+
+            # Count W/D/L for form
+            win_count = form.count("W")
+            draw_count = form.count("D")
+            loss_count = form.count("L")
+
+            # Last 6 matches stats
+            last6_stats = {}
+            last6_ul = block.find("div", class_="team_stats_forms")
+            if last6_ul:
+                for li in last6_ul.find_all("li"):
+                    stat_name = li.find("p").get_text(strip=True)
+                    stat_value = li.find("div").get_text(strip=True)
+                    last6_stats[stat_name] = stat_value
+
+            # Add W/D/L counts inside Last6Stats
+            if idx == 0:
+                last6_stats["Home_Last6_Wins"] = win_count
+                last6_stats["Home_Last6_Draws"] = draw_count
+                last6_stats["Home_Last6_Losses"] = loss_count
+            else:
+                last6_stats["Away_Last6_Wins"] = win_count
+                last6_stats["Away_Last6_Draws"] = draw_count
+                last6_stats["Away_Last6_Losses"] = loss_count
+
+            # Overall stats
+            overall_stats = {}
+            overall_ul = block.find("div", class_="team_stats_item")
+            if overall_ul:
+                for li in overall_ul.find_all("li"):
+                    stat_name = li.find("p").get_text(strip=True)
+                    stat_value = li.find("div").get_text(strip=True)
+                    overall_stats[stat_name] = stat_value
+
+            stats[team_name] = {
+                "Form": form,
+                "Last6Stats": last6_stats,
+                "OverallStats": overall_stats
+            }
+
+        return stats
+
     
     def flatten_team_stats(self, team_stats: Dict, prefix: str = "") -> Dict:
         flat = {}
@@ -392,6 +525,9 @@ async def main():
     agent = FootballStatsAgent()
     # Clear cache before starting
     agent.clear_cache()
+    training_fixtures = await agent.training_fixtures()
+    if training_fixtures:
+        df = pd.DataFrame(training_fixtures)
     results = await agent.analyze_fixture(await agent.get_fixtures())
     df = pd.DataFrame(results)
     print(df.to_string(index=False))

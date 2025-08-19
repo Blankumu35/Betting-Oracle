@@ -70,7 +70,13 @@ class ImprovedFixturePredictor:
         X_df = pd.DataFrame(X, columns=self.h2h_numeric_features)
 
         outcome_pred = self.model_outcome.predict(X_df)[0]
+        if len(self.model_outcome.classes_) == 2:
+            outcome_pred = 0 if outcome_pred == 0 else 1
         outcome_proba = self.model_outcome.predict_proba(X_df)[0]
+
+        # Predict Over/Under 2.5 goals
+        over_pred = self.model_over.predict(X_df)[0]
+        over_proba = self.model_over.predict_proba(X_df)[0]
         over_pred = self.model_over.predict(X_df)[0]
         over_proba = self.model_over.predict_proba(X_df)[0]
 
@@ -79,7 +85,7 @@ class ImprovedFixturePredictor:
         fixture_string = f"{home_team} vs {away_team}"
 
         # Outcome mapping
-        binary_outcome_map = {0: "Home Win/Draw", 1: "Away Win"}
+        binary_outcome_map = {0: "Home Win/Draw", 1: "Away Win/Draw"}
         outcome_map = {0: "Home Win", 1: "Draw", 2: "Away Win"}
         if len(outcome_proba) == 2:
             predicted_outcome = binary_outcome_map[outcome_pred]
@@ -102,8 +108,6 @@ class ImprovedFixturePredictor:
         return {
             "fixture": fixture_string,
             "date": fixture_data.get("Date", "Unknown"),
-            "time": fixture_data.get("Time", "Unknown"),
-            "venue": fixture_data.get("Venue", "Unknown"),
             "predicted_outcome": predicted_outcome,
             "outcome_confidence": outcome_confidence,
             "outcome_probabilities": outcome_probabilities,
@@ -120,15 +124,19 @@ class ImprovedFixturePredictor:
 
     def generate_prediction_insights(self, features: Dict, outcome_proba: np.ndarray, over_proba: np.ndarray) -> List[str]:
         insights = []
-        home_form = features.get("Home_Form", "")
-        away_form = features.get("Away_Form", "")
-        home_goals = float(features.get("Home_Last6_Goals", 0))
-        away_goals = float(features.get("Away_Last6_Goals", 0))
+        home_form = features.get("Home_Overall_Wins", "")
+        print(home_form)
+        away_form = features.get("Away_Overall_Wins", "")
+        home_goals = float(features.get("Home_Overall_per_game", 0))
+        print(away_form)
+        print(home_goals)
+        away_goals = float(features.get("Away_Overall_per_game", 0))
+        print(away_goals)
 
         if home_form and away_form:
-            if home_form.count("W") > away_form.count("W"):
+            if home_form> away_form:
                 insights.append("Home team has better recent form")
-            elif away_form.count("W") > home_form.count("W"):
+            elif away_form > home_form:
                 insights.append("Away team has better recent form")
 
         if home_goals > 2.5 or away_goals > 2.5:
