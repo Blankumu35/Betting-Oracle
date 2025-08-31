@@ -1,887 +1,180 @@
 {
-  "timestamp": "2025-08-02T19:14:45.062798",
+  "timestamp": "2025-08-19T17:12:51.426267",
   "fixtures": [
     {
-      "Home": "St George City",
-      "Score": "1-0",
-      "Away": "Sutherland Sharks",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/st-george-city/sutherland-sharks/"
-    },
-    {
-      "Home": "Ventforet Kofu",
-      "Score": "1-3",
-      "Away": "Montedio Yamagata",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/montedio-yamagata/ventforet-kofu/"
-    },
-    {
-      "Home": "Yunnan Yukun",
-      "Score": "3-1",
-      "Away": "Shanghai Shenhua",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/shanghai-shenhua/yunnan-yukun/"
-    },
-    {
-      "Home": "JEF United Chiba",
-      "Score": "0-1",
-      "Away": "Iwaki FC",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/iwaki-fc/jef-united-chiba/"
-    },
-    {
-      "Home": "Fujieda MYFC",
-      "Score": "2-2",
-      "Away": "Renofa Yamaguchi",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fujieda-myfc/renofa-yamaguchi/"
-    },
-    {
-      "Home": "Tokushima Vortis",
+      "Home": "Winner Match 58",
       "Score": "0-0",
-      "Away": "Ehime FC",
+      "Away": "Winner Match 57",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/ehime-fc/tokushima-vortis/"
+      "H2H_URL": "https://www.fctables.com/h2h/winner_match_57/winner_match_58/"
     },
     {
-      "Home": "Oita Trinita",
-      "Score": "0-1",
-      "Away": "Imabari FC",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/imabari-fc/oita-trinita/"
-    },
-    {
-      "Home": "Ulsan Hyundai",
-      "Score": "0-0",
-      "Away": "Suwon FC",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/suwon-city/ulsan-hyundai/"
-    },
-    {
-      "Home": "Inhulets Petrove",
-      "Score": "0-0",
-      "Away": "Bukovyna Chernivtsi",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bukovyna-chernivtsi/inhulets-petrove/"
-    },
-    {
-      "Home": "Bucheon FC 1995",
-      "Score": "0-2",
-      "Away": "Seongnam FC",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bucheon-fc-1995/seongnam-fc/"
-    },
-    {
-      "Home": "Seoul E-Land FC",
-      "Score": "0-0",
-      "Away": "Incheon United",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/incheon-united/seoul-e-land-fc/"
-    },
-    {
-      "Home": "Jeonnam Dragons",
-      "Score": "0-0",
-      "Away": "Asan Mugunghwa",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/ansan-police-fc/jeonnam-dragons/"
-    },
-    {
-      "Home": "Hwaseong",
-      "Score": "0-1",
-      "Away": "Gimpo Citizen",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/gimpo-citizen/hwaseong/"
-    },
-    {
-      "Home": "Ansan Greeners",
-      "Score": "1-1",
-      "Away": "Chungbuk Cheongju FC",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/ansan-greeners/chungbuk-cheongju-fc/"
-    },
-    {
-      "Home": "Gyeongnam FC",
-      "Score": "1-0",
-      "Away": "Busan I'Park",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/busan-ipark/gyeongnam-fc/"
-    },
-    {
-      "Home": "Cheonan City",
-      "Score": "0-2",
-      "Away": "Suwon Bluewings",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/cheonan-city/suwon-bluewings/"
-    },
-    {
-      "Home": "JDFS Alberts",
-      "Score": "0-1",
-      "Away": "R\u012bgas FS II",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/jdfs_alberts/rgas_fs_ii/"
-    },
-    {
-      "Home": "FA Siauliai B",
+      "Home": "Salyut Belgorod",
       "Score": "2-0",
-      "Away": "Nevezis",
+      "Away": "Zvezda Ryazan",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fa-siauliai-b/nevezis/"
+      "H2H_URL": "https://www.fctables.com/h2h/salyut-belgorod/zvezda-ryazan/"
     },
     {
-      "Home": "Yanbian Longding",
-      "Score": "0-1",
-      "Away": "Hebei Kungfu",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/hebei-kungfu/yanbian-longding/"
-    },
-    {
-      "Home": "Slask Wroclaw ll",
+      "Home": "Club River Plate",
       "Score": "0-0",
-      "Away": "Hutnik Nowa Huta",
+      "Away": "12 de Junio VH",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/hutnik-nowa-huta/slask-wroclaw-ll/"
+      "H2H_URL": "https://www.fctables.com/h2h/12_de_junio_vh/club-river-plate/"
     },
     {
-      "Home": "Jubilo Iwata",
-      "Score": "1-2",
-      "Away": "Blaublitz Akita",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/blaublitz-akita/jubilo-iwata/"
-    },
-    {
-      "Home": "Darmstadt",
-      "Score": "1-0",
-      "Away": "Bochum",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bochum/darmstadt/"
-    },
-    {
-      "Home": "Karlsruher SC",
-      "Score": "1-0",
-      "Away": "Preu\u00dfen Muenster",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/karlsruher-sc/preussen-muenster/"
-    },
-    {
-      "Home": "Paderborn",
-      "Score": "0-0",
-      "Away": "Holstein Kiel",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/holstein-kiel/paderborn/"
-    },
-    {
-      "Home": "Elversberg",
-      "Score": "0-0",
-      "Away": "Nuernberg",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/elversberg/nuernberg/"
-    },
-    {
-      "Home": "Oestersunds FK",
-      "Score": "0-1",
-      "Away": "Helsingborg",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/helsingborg/oestersunds-fk/"
-    },
-    {
-      "Home": "Hannover 96 II",
-      "Score": "1-0",
-      "Away": "Schoeningen",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/hannover-96-ii/schoeningen/"
-    },
-    {
-      "Home": "Sandecja Nowy Sacz",
-      "Score": "0-0",
-      "Away": "\u00c5\u0161wit Skolwin",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/sandecja-nowy-sacz/wit_skolwin/"
-    },
-    {
-      "Home": "Shenyang Urban FC",
-      "Score": "0-0",
-      "Away": "Guangzhou E-Power",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/guangzhou_epower/shenyang-urban-fc/"
-    },
-    {
-      "Home": "Shaanxi Union",
-      "Score": "0-0",
-      "Away": "Chongqing Tongliang Long",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/chongqing-tongliang-long/shaanxi_union/"
-    },
-    {
-      "Home": "Shanghai Jiading",
-      "Score": "0-0",
-      "Away": "Nanjing City FC",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/nanjing-city-fc/shanghai-jiading/"
-    },
-    {
-      "Home": "Sollentuna FF",
-      "Score": "0-0",
-      "Away": "Enkoeping",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/enkoeping/sollentuna-ff/"
-    },
-    {
-      "Home": "FC Stockholm Internazionale",
-      "Score": "0-0",
-      "Away": "Oerebro Syrianska IF",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fc-stockholm-internazionale/oerebro-syrianska-if/"
-    },
-    {
-      "Home": "Smedby AIS",
-      "Score": "0-0",
-      "Away": "Raegsveds IF",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/raegsveds-if/smedby-ais/"
-    },
-    {
-      "Home": "Eker \u00c3\u2013rebro",
-      "Score": "1-0",
-      "Away": "Arameiska-Syrianska IF",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/arameiska-syrianska-if/eker_rebro/"
-    },
-    {
-      "Home": "Lindome GIF",
-      "Score": "0-0",
-      "Away": "BK Astrio",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bk-astrio/lindome-gif/"
-    },
-    {
-      "Home": "Ull/Kisa",
-      "Score": "1-0",
-      "Away": "Rana FK",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/rana-fk/ull-kisa/"
-    },
-    {
-      "Home": "Vindbjart",
-      "Score": "0-0",
-      "Away": "Haugesund 2",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/haugesund-2/vindbjart/"
-    },
-    {
-      "Home": "Stord",
-      "Score": "0-0",
-      "Away": "V\u00c3\u00a5g",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/stord/vg/"
-    },
-    {
-      "Home": "Ishoej BK",
-      "Score": "0-0",
-      "Away": "AB",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/ab/ishoej-bk/"
-    },
-    {
-      "Home": "Odder",
-      "Score": "0-1",
-      "Away": "Naesby",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/naesby/odder/"
-    },
-    {
-      "Home": "SV Lichtenberg 47",
-      "Score": "0-0",
-      "Away": "TuS Makkabi Berlin",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/sv-lichtenberg-47/tus-makkabi-berlin/"
-    },
-    {
-      "Home": "FC Kilia Kiel",
-      "Score": "0-0",
-      "Away": "Holstein Kiel II",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fc-kilia-kiel/holstein-kiel-ii/"
-    },
-    {
-      "Home": "Weston Workers",
+      "Home": "Deportivo Santani",
       "Score": "2-0",
-      "Away": "Edgeworth Eagles",
+      "Away": "Sol de America",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/edgeworth-eagles/weston-workers/"
+      "H2H_URL": "https://www.fctables.com/h2h/deportivo-santani/sol-de-america/"
     },
     {
-      "Home": "Juventus",
-      "Score": "2-2",
-      "Away": "Reggiana",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/juventus/reggiana/"
-    },
-    {
-      "Home": "Moreton City Excelsior",
-      "Score": "2-5",
-      "Away": "St George Willawong FC",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/moreton_city_excelsior/st-george-willawong-fc/"
-    },
-    {
-      "Home": "Western Sydney Wanderers FC Youth",
+      "Home": "Kalamata",
       "Score": "0-0",
-      "Away": "Rockdale City Suns",
+      "Away": "AE Larissa",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/rockdale-city-suns/western-sydney-wanderers-fc-youth/"
+      "H2H_URL": "https://www.fctables.com/h2h/ae-larissa/kalamata/"
     },
     {
-      "Home": "Kataller Toyama",
+      "Home": "Kavala",
+      "Score": "0-0",
+      "Away": "Panserraikos FC",
+      "League": "",
+      "H2H_URL": "https://www.fctables.com/h2h/kavala/panserraikos-fc/"
+    },
+    {
+      "Home": "Anagennisi Karditsas",
+      "Score": "0-0",
+      "Away": "Kifisia FC",
+      "League": "",
+      "H2H_URL": "https://www.fctables.com/h2h/anagennisi-karditsas/kifisia-fc/"
+    },
+    {
+      "Home": "PAS Giannina",
       "Score": "0-2",
-      "Away": "Omiya Ardija",
+      "Away": "NFC Volos",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/kataller-toyama/omiya-ardija/"
+      "H2H_URL": "https://www.fctables.com/h2h/nfc-volos/pas-giannina/"
     },
     {
-      "Home": "V-Varen Nagasaki",
+      "Home": "Egaleo",
       "Score": "0-0",
-      "Away": "Vegalta Sendai",
+      "Away": "Panargiakos",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/v-varen-nagasaki/vegalta-sendai/"
+      "H2H_URL": "https://www.fctables.com/h2h/egaleo/panargiakos/"
     },
     {
-      "Home": "Redcliffe PCYC",
+      "Home": "Kuban Kholding",
+      "Score": "0-0",
+      "Away": "Nart Cherkessk",
+      "League": "",
+      "H2H_URL": "https://www.fctables.com/h2h/kuban-kholding/nart_cherkessk/"
+    },
+    {
+      "Home": "Kaluga",
+      "Score": "0-0",
+      "Away": "Amkal",
+      "League": "",
+      "H2H_URL": "https://www.fctables.com/h2h/amkal/kaluga/"
+    },
+    {
+      "Home": "Miedz Legnica",
       "Score": "1-0",
-      "Away": "Centenary Stormers",
+      "Away": "Lodzki KS",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/centenary_stormers/redcliffe_pcyc/"
+      "H2H_URL": "https://www.fctables.com/h2h/lodzki-ks/miedz-legnica/"
     },
     {
-      "Home": "Springfield United",
-      "Score": "1-6",
-      "Away": "North Pine",
+      "Home": "Pastoreo FC",
+      "Score": "2-0",
+      "Away": "Fernando de la Mora",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/north_pine/springfield_united/"
+      "H2H_URL": "https://www.fctables.com/h2h/fernando-de-la-mora/pastoreo-fc/"
     },
     {
-      "Home": "Chelyabinsk II",
+      "Home": "Rubio Nu",
+      "Score": "4-0",
+      "Away": "Encarnaci\u00c3\u00b3n",
+      "League": "",
+      "H2H_URL": "https://www.fctables.com/h2h/encarnacin/rubio-nu/"
+    },
+    {
+      "Home": "Irtysh Pavlodar",
       "Score": "0-0",
-      "Away": "Dinamo Barnaul",
+      "Away": "Temp Barnaul",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/chelyabinsk_ii/dinamo-barnaul/"
+      "H2H_URL": "https://www.fctables.com/h2h/irtysh-pavlodar/temp_barnaul/"
     },
     {
-      "Home": "Rochedale Rovers",
-      "Score": "2-1",
-      "Away": "Brisbane Strikers",
+      "Home": "Shirak II",
+      "Score": "0-5",
+      "Away": "Sardarapat",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/brisbane-strikers/rochedale-rovers/"
+      "H2H_URL": "https://www.fctables.com/h2h/sardarapat/shirak-ii/"
     },
     {
-      "Home": "Dunaf\u00f6ldv\u00e1r",
-      "Score": "-",
-      "Away": "Domb\u00f3v\u00e1ri",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/dombvri/dunafldvr/"
-    },
-    {
-      "Home": "Lunds BK",
-      "Score": "-",
-      "Away": "Husqvarna FF",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/husqvarna-ff/lunds-bk/"
-    },
-    {
-      "Home": "Vejgaard B",
-      "Score": "-",
-      "Away": "Br\u00f8nsh\u00f8j",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/brnshj/vejgaard_b/"
-    },
-    {
-      "Home": "Holb\u00e6k B&I",
-      "Score": "-",
-      "Away": "IF Lyseng",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/holbk_bi/if-lyseng/"
-    },
-    {
-      "Home": "H\u00c3\u00b8rsholm-Usser\u00c3\u00b8d",
-      "Score": "-",
-      "Away": "Nykoebing FC",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/hrsholmusserd/nykoebing-fc/"
-    },
-    {
-      "Home": "TuS Dassendorf",
-      "Score": "-",
-      "Away": "SV Curslack-Neuengamme",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/sv-curslack-neuengamme/tus-dassendorf/"
-    },
-    {
-      "Home": "Cardiff",
-      "Score": "-",
-      "Away": "Peterborough",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/cardiff/peterborough/"
-    },
-    {
-      "Home": "Guangxi Baoyun",
-      "Score": "-",
-      "Away": "Shenzhen Juniors",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/guangxi-baoyun/shenzhen_juniors/"
-    },
-    {
-      "Home": "VSK Aarhus",
-      "Score": "-",
-      "Away": "Brabrand",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/brabrand/vsk-aarhus/"
-    },
-    {
-      "Home": "Qingdao Youth Island FC",
-      "Score": "-",
-      "Away": "Henan Jianye",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/henan-jianye/qingdao-youth-island-fc/"
-    },
-    {
-      "Home": "Chengdu Qianbao FC",
-      "Score": "-",
-      "Away": "Shandong Luneng",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/chengdu-qianbao-fc/shandong-luneng/"
-    },
-    {
-      "Home": "Vorskla",
-      "Score": "-",
-      "Away": "FSK Mariupol",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fsk-mariupol/vorskla/"
-    },
-    {
-      "Home": "Meizhou Hakka",
-      "Score": "-",
-      "Away": "Shanghai SIPG FC",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/meizhou-hakka/shanghai-sipg-fc/"
-    },
-    {
-      "Home": "Energie Cottbus",
-      "Score": "-",
-      "Away": "Saarbruecken",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/energie-cottbus/saarbruecken/"
-    },
-    {
-      "Home": "Ingolstadt",
-      "Score": "-",
-      "Away": "Jahn Regensburg",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/ingolstadt/jahn-regensburg/"
-    },
-    {
-      "Home": "Waldhof Mannheim",
-      "Score": "-",
-      "Away": "SC Verl",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/sc-verl/waldhof-mannheim/"
-    },
-    {
-      "Home": "Hoffenheim II",
-      "Score": "-",
-      "Away": "TSV Havelse",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/hoffenheim-ii/tsv-havelse/"
-    },
-    {
-      "Home": "Osnabrueck",
-      "Score": "-",
-      "Away": "Alemannia Aachen",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/alemannia_aachen/osnabrueck/"
-    },
-    {
-      "Home": "Jaszfenyszarui",
-      "Score": "-",
-      "Away": "FC Hatvan",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fc_hatvan/jaszfenyszarui/"
-    },
-    {
-      "Home": "Okzhetpes Kokshetau",
-      "Score": "-",
-      "Away": "Yelimay Semey",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/okzhetpes-kokshetau/yelimay_semey/"
-    },
-    {
-      "Home": "FK Jelgava",
-      "Score": "-",
-      "Away": "FK Liepaja",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fk-jelgava/fk-liepaja/"
-    },
-    {
-      "Home": "FC Eilenburg",
-      "Score": "-",
-      "Away": "FSV Zwickau",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fc-eilenburg/fsv-zwickau/"
-    },
-    {
-      "Home": "FSV Luckenwalde",
-      "Score": "-",
-      "Away": "Chemnitzer FC",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/chemnitzer-fc/fsv-luckenwalde/"
-    },
-    {
-      "Home": "Greifswalder SV",
-      "Score": "-",
-      "Away": "BSG Chemie Leipzig",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bsg-chemie-leipzig/greifswalder-sv/"
-    },
-    {
-      "Home": "TSV Steinbach",
-      "Score": "-",
-      "Away": "Eintracht Trier",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/eintracht-trier/tsv-steinbach/"
-    },
-    {
-      "Home": "Freiberg",
-      "Score": "-",
-      "Away": "Freiburg II",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/freiberg/freiburg-ii/"
-    },
-    {
-      "Home": "Bahlinger SC",
-      "Score": "-",
-      "Away": "Kickers Offenbach",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bahlinger-sc/kickers-offenbach/"
-    },
-    {
-      "Home": "Homburg",
-      "Score": "-",
-      "Away": "Hessen Kassel",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/hessen-kassel/homburg/"
-    },
-    {
-      "Home": "Mainz 05 II",
-      "Score": "-",
-      "Away": "FCA Walldorf",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fca-walldorf/mainz-05-ii/"
-    },
-    {
-      "Home": "Bayern Alzenau",
-      "Score": "-",
-      "Away": "TSV Schott Mainz",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bayern-alzenau/tsv-schott-mainz/"
-    },
-    {
-      "Home": "Sonnenhof Gro\u00dfaspach",
-      "Score": "-",
-      "Away": "TSG Balingen",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/sonnenhof-grossaspach/tsg-balingen/"
-    },
-    {
-      "Home": "Fortuna Duesseldorf II",
-      "Score": "-",
-      "Away": "Oberhausen",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fortuna-duesseldorf-ii/oberhausen/"
-    },
-    {
-      "Home": "Schalke 04 II",
-      "Score": "-",
-      "Away": "SC Paderborn 07 II",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/sc-paderborn-07-ii/schalke_04_ii/"
-    },
-    {
-      "Home": "Fortuna Koeln",
-      "Score": "-",
-      "Away": "Bochum II",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bochum_ii/fortuna-koeln/"
-    },
-    {
-      "Home": "Bonner SC",
-      "Score": "-",
-      "Away": "Borussia Moenchengladbach II",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bonner-sc/borussia-moenchengladbach-ii/"
-    },
-    {
-      "Home": "SV Roedinghausen",
-      "Score": "-",
-      "Away": "Sportfreunde Lotte",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/sv-roedinghausen/sportfreunde-lotte/"
-    },
-    {
-      "Home": "FC Koeln II",
-      "Score": "-",
-      "Away": "SC Wiedenbrueck",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fc-koeln-ii/sc-wiedenbrueck/"
-    },
-    {
-      "Home": "FC Guetersloh",
-      "Score": "-",
-      "Away": "FC Bocholt",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fc-bocholt/fc-guetersloh/"
-    },
-    {
-      "Home": "1. FC Phoenix Luebeck",
-      "Score": "-",
-      "Away": "Blau-Weiss Lohne",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/1-fc-phoenix-luebeck/blau-weiss-lohne/"
-    },
-    {
-      "Home": "Werder Bremen II",
-      "Score": "-",
-      "Away": "ETSV Weiche Flensburg",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/etsv-weiche-flensburg/werder-bremen-ii/"
-    },
-    {
-      "Home": "Unterhaching",
-      "Score": "-",
-      "Away": "Ansbach",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/ansbach/unterhaching/"
-    },
-    {
-      "Home": "Greuther Fuerth II",
-      "Score": "-",
-      "Away": "TSV Aubstadt",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/greuther-fuerth-ii/tsv-aubstadt/"
-    },
-    {
-      "Home": "Nomme United",
-      "Score": "-",
-      "Away": "Levadia Tallinn U21",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/levadia-tallinn-u21/nomme-united/"
-    },
-    {
-      "Home": "FC Tallinn",
-      "Score": "-",
-      "Away": "Flora Tallinn U21",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fc-tallinn/flora-tallinn-u21/"
-    },
-    {
-      "Home": "Aug\u00c5\u00a1daugava",
-      "Score": "-",
-      "Away": "M\u00c4\u0081rupe",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/augdaugava/mrupe/"
-    },
-    {
-      "Home": "FK Kauno Zalgiris B",
-      "Score": "-",
-      "Away": "FK Vilnius",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fk-kauno-zalgiris-b/fk-vilnius/"
-    },
-    {
-      "Home": "Aarhus Fremad",
-      "Score": "-",
-      "Away": "Lyngby",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/aarhus-fremad/lyngby/"
-    },
-    {
-      "Home": "Middelfart G og BK",
-      "Score": "-",
-      "Away": "Esbjerg fB",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/esbjerg-fb/middelfart-g-og-bk/"
-    },
-    {
-      "Home": "Taeby FK",
-      "Score": "-",
-      "Away": "FC Jaerfaella",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fc-jaerfaella/taeby-fk/"
-    },
-    {
-      "Home": "IFK Kumla",
-      "Score": "-",
-      "Away": "Vaenersborgs FK",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/ifk-kumla/vaenersborgs-fk/"
-    },
-    {
-      "Home": "FK Karlskrona",
-      "Score": "-",
-      "Away": "Nosaby IF",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fk-karlskrona/nosaby-if/"
-    },
-    {
-      "Home": "Torns IF",
-      "Score": "-",
-      "Away": "Oesterlen FF",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/oesterlen-ff/torns-if/"
-    },
-    {
-      "Home": "Stroemmen",
-      "Score": "-",
-      "Away": "Strindheim",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/strindheim/stroemmen/"
-    },
-    {
-      "Home": "Asker",
-      "Score": "-",
-      "Away": "Grorud",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/asker/grorud/"
-    },
-    {
-      "Home": "Kjelsaas",
-      "Score": "-",
-      "Away": "Hoenefoss",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/hoenefoss/kjelsaas/"
-    },
-    {
-      "Home": "Bjarg",
-      "Score": "-",
-      "Away": "Foerde",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bjarg/foerde/"
-    },
-    {
-      "Home": "Fana",
-      "Score": "-",
-      "Away": "FK Fyllingsdalen",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fk-fyllingsdalen/fana/"
-    },
-    {
-      "Home": "Ask\u00c3\u00b8y",
-      "Score": "-",
-      "Away": "Gneist",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/asky/gneist/"
-    },
-    {
-      "Home": "Brodd",
-      "Score": "-",
-      "Away": "Sandnes 2",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/brodd/sandnes-2/"
-    },
-    {
-      "Home": "Madla",
-      "Score": "-",
-      "Away": "Staal Joerpeland",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/madla/staal-joerpeland/"
-    },
-    {
-      "Home": "Lokomotiv Oslo FK",
-      "Score": "-",
-      "Away": "Grei",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/grei/lokomotiv-oslo-fk/"
-    },
-    {
-      "Home": "Vendsyssel FF",
-      "Score": "-",
-      "Away": "HIK",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/hik/vendsyssel-ff/"
-    },
-    {
-      "Home": "Vanloese",
-      "Score": "-",
-      "Away": "FA 2000",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fa-2000/vanloese/"
-    },
-    {
-      "Home": "Frem",
-      "Score": "-",
-      "Away": "Sundby",
-      "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/frem/sundby/"
-    },
-    {
-      "Home": "Turk Gucu Friedberg",
-      "Score": "-",
-      "Away": "Darmstadt 98 II",
+      "Home": "Gandzasar",
+      "Score": "3-0",
+      "Away": "Ararat Armenia II",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/darmstadt_98_ii/turk-gucu-friedberg/"
+      "H2H_URL": "https://www.fctables.com/h2h/ararat-armenia-ii/gandzasar/"
     },
     {
-      "Home": "Heiligenstadt",
+      "Home": "Noah II",
       "Score": "-",
-      "Away": "Germania Halberstadt",
+      "Away": "Pyunik II",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/germania-halberstadt/heiligenstadt/"
+      "H2H_URL": "https://www.fctables.com/h2h/noah_ii/pyunik-ii/"
     },
     {
-      "Home": "Bischofswerdaer FV",
+      "Home": "Banants II",
       "Score": "-",
-      "Away": "Einheit Rudolstadt",
+      "Away": "Ararat II",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bischofswerdaer-fv/einheit-rudolstadt/"
+      "H2H_URL": "https://www.fctables.com/h2h/ararat-ii/banants-ii/"
     },
     {
-      "Home": "RSV Eintracht",
+      "Home": "Bistrc",
       "Score": "-",
-      "Away": "Budissa Bautzen",
+      "Away": "Tabor",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/budissa-bautzen/rsv-eintracht/"
+      "H2H_URL": "https://www.fctables.com/h2h/bistrc/tabor/"
     },
     {
-      "Home": "Hansa Rostock II",
+      "Home": "National Bank",
       "Score": "-",
-      "Away": "Anker Wismar",
+      "Away": "Kahraba Ismailia",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/anker_wismar/hansa-rostock-ii/"
+      "H2H_URL": "https://www.fctables.com/h2h/kahraba_ismailia/national-bank1/"
     },
     {
-      "Home": "Goeppinger SV",
+      "Home": "Pharco FC",
       "Score": "-",
-      "Away": "FV Ravensburg",
+      "Away": "El Geish",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fv-ravensburg/goeppinger-sv/"
+      "H2H_URL": "https://www.fctables.com/h2h/el-geish/pharco-fc/"
     },
     {
-      "Home": "Rotenhof",
+      "Home": "Al Ahli",
       "Score": "-",
-      "Away": "VfR Neum\u00fcnster",
+      "Away": "Al-Wehdat",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/rotenhof/vfr_neumnster/"
+      "H2H_URL": "https://www.fctables.com/h2h/al_ahli/al-wehdat/"
     },
     {
-      "Home": "Union Neumuenster",
+      "Home": "Al-Faisaly",
       "Score": "-",
-      "Away": "Inter Tuerkspor Kiel",
+      "Away": "Shabab Al-Ordon",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/inter-tuerkspor-kiel/union-neumuenster/"
+      "H2H_URL": "https://www.fctables.com/h2h/al-faisaly1/shabab-al-ordon/"
     },
     {
-      "Home": "Pirmasens",
+      "Home": "Al-Seeb",
       "Score": "-",
-      "Away": "Koblenz",
+      "Away": "Al-Khabourah",
       "League": "",
-      "H2H_URL": "https://www.fctables.com/h2h/koblenz/pirmasens/"
+      "H2H_URL": "https://www.fctables.com/h2h/alkhabourah/al-seeb/"
     }
   ]
 }

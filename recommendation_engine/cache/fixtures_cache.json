@@ -1,305 +1,836 @@
 {
-  "timestamp": "2025-07-29T21:02:53.669492",
+  "timestamp": "2025-08-11T22:44:30.621835",
   "fixtures": [
     {
-      "Date": "",
-      "Time": "",
-      "Home": "FC Krasnodar",
-      "Score": "1-2",
-      "Away": "Krylya Sovetov Samara",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fc-krasnodar/krylya-sovetov-samara/"
+      "Home": "FK Sileks",
+      "Score": "5-0",
+      "Away": "FC Academy Pandev",
+      "League": "mk 1",
+      "FK Sileks": {
+        "Form": [
+          "W",
+          "W",
+          "L",
+          "L"
+        ],
+        "Last6Stats": {
+          "Home_Last6_Wins": 2,
+          "Home_Last6_Draws": 0,
+          "Home_Last6_Losses": 2
+        },
+        "OverallStats": {
+          "Matches": "4",
+          "Goals": "7",
+          "per game": "1.75",
+          "Wins": "2",
+          "Draws": "0",
+          "Losses": "2",
+          "Over 2.5": "75.0%",
+          "Over 1.5": "100.0%",
+          "CS": "25.00%",
+          "BTTS": "25.00%"
+        }
+      },
+      "FC Academy Pandev": {
+        "Form": [
+          "L"
+        ],
+        "Last6Stats": {
+          "Away_Last6_Wins": 0,
+          "Away_Last6_Draws": 0,
+          "Away_Last6_Losses": 1
+        },
+        "OverallStats": {
+          "Matches": "1",
+          "Goals": "0",
+          "per game": "0.00",
+          "Wins": "0",
+          "Draws": "0",
+          "Losses": "1",
+          "Over 2.5": "100.0%",
+          "Over 1.5": "100.0%",
+          "CS": "0.00%",
+          "BTTS": "0.00%"
+        }
+      }
     },
     {
-      "Date": "",
-      "Time": "",
-      "Home": "Dynamo Kyiv",
-      "Score": "2-0",
-      "Away": "Hamrun Spartans",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/dynamo-kyiv/hamrun-spartans/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Drita",
-      "Score": "0-1",
-      "Away": "FC K\u00f8benhavn",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/drita1/fc-copenhagen/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Thor Akureyri",
+      "Home": "Shirak",
       "Score": "0-0",
-      "Away": "Grindavik",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/grindavik/thor-akureyri/"
+      "Away": "Pyunik",
+      "League": "am 1",
+      "Shirak": {
+        "Form": [
+          "L",
+          "D",
+          "W",
+          "D",
+          "W",
+          "D"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "9",
+          "per game": "1.50",
+          "Wins": "2",
+          "Draws": "1",
+          "Losses": "3",
+          "Over 2.5": "4/6",
+          "Over 1.5": "5/6",
+          "CS": "2/6",
+          "BTTS": "2/6",
+          "Home_Last6_Wins": 2,
+          "Home_Last6_Draws": 3,
+          "Home_Last6_Losses": 1
+        },
+        "OverallStats": {
+          "Matches": "7",
+          "Goals": "10",
+          "per game": "1.43",
+          "Wins": "2",
+          "Draws": "3",
+          "Losses": "2",
+          "Over 2.5": "42.9%",
+          "Over 1.5": "100.0%",
+          "CS": "14.29%",
+          "BTTS": "71.43%"
+        }
+      },
+      "Pyunik": {
+        "Form": [
+          "W",
+          "L",
+          "W",
+          "W",
+          "L",
+          "W"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "12",
+          "per game": "2.00",
+          "Wins": "3",
+          "Draws": "0",
+          "Losses": "3",
+          "Over 2.5": "5/6",
+          "Over 1.5": "5/6",
+          "CS": "1/6",
+          "BTTS": "4/6",
+          "Away_Last6_Wins": 4,
+          "Away_Last6_Draws": 0,
+          "Away_Last6_Losses": 2
+        },
+        "OverallStats": {
+          "Matches": "9",
+          "Goals": "14",
+          "per game": "1.56",
+          "Wins": "5",
+          "Draws": "0",
+          "Losses": "4",
+          "Over 2.5": "66.7%",
+          "Over 1.5": "77.8%",
+          "CS": "22.22%",
+          "BTTS": "55.56%"
+        }
+      }
     },
     {
-      "Date": "",
-      "Time": "",
-      "Home": "Bromsgrove Sporting",
-      "Score": "4-0",
-      "Away": "Solihull Moors",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/bromsgrove-sporting/solihull-moors/"
+      "Home": "Botosani",
+      "Score": "3-1",
+      "Away": "FC Arges Pitesti",
+      "League": "ro 1",
+      "Botosani": {
+        "Form": [
+          "W",
+          "L",
+          "W",
+          "D",
+          "D",
+          "L"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "11",
+          "per game": "1.83",
+          "Wins": "3",
+          "Draws": "2",
+          "Losses": "1",
+          "Over 2.5": "4/6",
+          "Over 1.5": "5/6",
+          "CS": "2/6",
+          "BTTS": "4/6",
+          "Home_Last6_Wins": 2,
+          "Home_Last6_Draws": 2,
+          "Home_Last6_Losses": 2
+        },
+        "OverallStats": {
+          "Matches": "10",
+          "Goals": "19",
+          "per game": "1.90",
+          "Wins": "4",
+          "Draws": "4",
+          "Losses": "2",
+          "Over 2.5": "60.0%",
+          "Over 1.5": "80.0%",
+          "CS": "30.00%",
+          "BTTS": "70.00%"
+        }
+      },
+      "FC Arges Pitesti": {
+        "Form": [
+          "L",
+          "W",
+          "W",
+          "L",
+          "L",
+          "L"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "11",
+          "per game": "1.83",
+          "Wins": "3",
+          "Draws": "0",
+          "Losses": "3",
+          "Over 2.5": "4/6",
+          "Over 1.5": "6/6",
+          "CS": "2/6",
+          "BTTS": "3/6",
+          "Away_Last6_Wins": 2,
+          "Away_Last6_Draws": 0,
+          "Away_Last6_Losses": 4
+        },
+        "OverallStats": {
+          "Matches": "8",
+          "Goals": "12",
+          "per game": "1.50",
+          "Wins": "3",
+          "Draws": "0",
+          "Losses": "5",
+          "Over 2.5": "62.5%",
+          "Over 1.5": "87.5%",
+          "CS": "12.50%",
+          "BTTS": "62.50%"
+        }
+      }
     },
     {
-      "Date": "",
-      "Time": "",
-      "Home": "FC Differdange 03",
-      "Score": "0-0",
-      "Away": "TNS",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fc-differdange-03/tns/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Wingate & Finchley",
-      "Score": "0-0",
-      "Away": "Boreham Wood",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/boreham-wood/wingate-finchley/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Matlock Town",
-      "Score": "1-0",
-      "Away": "Mansfield",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/mansfield/matlock-town/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Inter Club d'Escaldes",
-      "Score": "0-0",
-      "Away": "Olimpija Ljubljana",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/inter-club-descaldes/olimpija-ljubljana/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Barnet",
-      "Score": "0-0",
-      "Away": "Newport",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/barnet/newport/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Braintree Town",
-      "Score": "0-0",
-      "Away": "Colchester",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/braintree-town/colchester/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Altrincham",
-      "Score": "0-0",
-      "Away": "Port Vale",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/altrincham/port-vale/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Sutton United",
-      "Score": "0-0",
-      "Away": "Millwall",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/millwall/sutton-united/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Valencia",
-      "Score": "0-0",
-      "Away": "Marseille",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/marseille/valencia/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "East Stirlingshire",
-      "Score": "0-0",
-      "Away": "Albion Rovers",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/albion-rovers/east-stirlingshire/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Cowdenbeath",
-      "Score": "0-0",
-      "Away": "Bo'ness United",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/boness-united/cowdenbeath/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Civil Service Strollers",
-      "Score": "0-0",
-      "Away": "Celtic B",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/celtic-b/civil-service-strollers/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Tranent Juniors",
-      "Score": "0-0",
-      "Away": "Berwick",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/berwick/tranent-juniors/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Cumbernauld Colts",
-      "Score": "0-0",
-      "Away": "Clydebank",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/clydebank/cumbernauld-colts/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Saburtalo",
+      "Home": "FA Siauliai",
       "Score": "2-2",
-      "Away": "Levadia Maardu",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/levadia-maardu/saburtalo/"
+      "Away": "Zalgiris Vilnius",
+      "League": "lt 1",
+      "FA Siauliai": {
+        "Form": [
+          "L",
+          "W",
+          "L",
+          "W",
+          "L",
+          "W"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "12",
+          "per game": "2.00",
+          "Wins": "3",
+          "Draws": "0",
+          "Losses": "3",
+          "Over 2.5": "3/6",
+          "Over 1.5": "5/6",
+          "CS": "2/6",
+          "BTTS": "2/6",
+          "Home_Last6_Wins": 3,
+          "Home_Last6_Draws": 0,
+          "Home_Last6_Losses": 3
+        },
+        "OverallStats": {
+          "Matches": "76",
+          "Goals": "92",
+          "per game": "1.21",
+          "Wins": "24",
+          "Draws": "26",
+          "Losses": "26",
+          "Over 2.5": "51.3%",
+          "Over 1.5": "68.4%",
+          "CS": "32.89%",
+          "BTTS": "50.00%"
+        }
+      },
+      "Zalgiris Vilnius": {
+        "Form": [
+          "W",
+          "L",
+          "L",
+          "D",
+          "W",
+          "L"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "4",
+          "per game": "0.67",
+          "Wins": "2",
+          "Draws": "1",
+          "Losses": "3",
+          "Over 2.5": "1/6",
+          "Over 1.5": "4/6",
+          "CS": "3/6",
+          "BTTS": "1/6",
+          "Away_Last6_Wins": 2,
+          "Away_Last6_Draws": 1,
+          "Away_Last6_Losses": 3
+        },
+        "OverallStats": {
+          "Matches": "33",
+          "Goals": "53",
+          "per game": "1.61",
+          "Wins": "14",
+          "Draws": "8",
+          "Losses": "11",
+          "Over 2.5": "45.5%",
+          "Over 1.5": "75.8%",
+          "CS": "42.42%",
+          "BTTS": "36.36%"
+        }
+      }
     },
     {
-      "Date": "",
-      "Time": "",
-      "Home": "Al-Akhdar",
-      "Score": "0-0",
-      "Away": "Al Ahli Tripoli",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/al_ahli_tripoli/alakhdar/"
+      "Home": "Septemvri Sofia",
+      "Score": "2-3",
+      "Away": "Beroe",
+      "League": "bg 1",
+      "Septemvri Sofia": {
+        "Form": [
+          "L",
+          "L",
+          "L",
+          "L",
+          "W",
+          "L"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "8",
+          "per game": "1.33",
+          "Wins": "2",
+          "Draws": "0",
+          "Losses": "4",
+          "Over 2.5": "6/6",
+          "Over 1.5": "6/6",
+          "CS": "0/6",
+          "BTTS": "5/6",
+          "Home_Last6_Wins": 1,
+          "Home_Last6_Draws": 0,
+          "Home_Last6_Losses": 5
+        },
+        "OverallStats": {
+          "Matches": "10",
+          "Goals": "12",
+          "per game": "1.20",
+          "Wins": "3",
+          "Draws": "0",
+          "Losses": "7",
+          "Over 2.5": "100.0%",
+          "Over 1.5": "100.0%",
+          "CS": "10.00%",
+          "BTTS": "60.00%"
+        }
+      },
+      "Beroe": {
+        "Form": [
+          "W",
+          "L",
+          "D",
+          "D",
+          "W",
+          "D"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "8",
+          "per game": "1.33",
+          "Wins": "2",
+          "Draws": "2",
+          "Losses": "2",
+          "Over 2.5": "4/6",
+          "Over 1.5": "5/6",
+          "CS": "1/6",
+          "BTTS": "4/6",
+          "Away_Last6_Wins": 2,
+          "Away_Last6_Draws": 3,
+          "Away_Last6_Losses": 1
+        },
+        "OverallStats": {
+          "Matches": "8",
+          "Goals": "9",
+          "per game": "1.13",
+          "Wins": "3",
+          "Draws": "4",
+          "Losses": "1",
+          "Over 2.5": "37.5%",
+          "Over 1.5": "62.5%",
+          "CS": "50.00%",
+          "BTTS": "37.50%"
+        }
+      }
     },
     {
-      "Date": "",
-      "Time": "",
-      "Home": "Al-Ittihad",
-      "Score": "3-2",
-      "Away": "Asswehly",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/alittihad/asswehly/"
+      "Home": "Torpedo Moscow",
+      "Score": "0-1",
+      "Away": "Spartak Kostroma",
+      "League": "ru 2",
+      "Torpedo Moscow": {
+        "Form": [
+          "L",
+          "D",
+          "L",
+          "D",
+          "L",
+          "W"
+        ],
+        "Last6Stats": {
+          "Home_Last6_Wins": 1,
+          "Home_Last6_Draws": 2,
+          "Home_Last6_Losses": 3
+        },
+        "OverallStats": {
+          "Matches": "12",
+          "Goals": "10",
+          "per game": "0.83",
+          "Wins": "3",
+          "Draws": "2",
+          "Losses": "7",
+          "Over 2.5": "41.7%",
+          "Over 1.5": "58.3%",
+          "CS": "33.33%",
+          "BTTS": "41.67%"
+        }
+      },
+      "Spartak Kostroma": {
+        "Form": [
+          "D",
+          "W",
+          "L",
+          "D"
+        ],
+        "Last6Stats": {
+          "Away_Last6_Wins": 1,
+          "Away_Last6_Draws": 2,
+          "Away_Last6_Losses": 1
+        },
+        "OverallStats": {
+          "Matches": "4",
+          "Goals": "5",
+          "per game": "1.25",
+          "Wins": "1",
+          "Draws": "2",
+          "Losses": "1",
+          "Over 2.5": "25.0%",
+          "Over 1.5": "75.0%",
+          "CS": "0.00%",
+          "BTTS": "75.00%"
+        }
+      }
     },
     {
-      "Date": "",
-      "Time": "",
-      "Home": "Al Ahli Benghazi",
-      "Score": "1-2",
-      "Away": "Al Hilal",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/al_ahli_benghazi/al_hilal/"
+      "Home": "FC Gareji 1960",
+      "Score": "0-1",
+      "Away": "Dinamo Batumi",
+      "League": "ge 1",
+      "FC Gareji 1960": {
+        "Form": [
+          "L",
+          "W",
+          "D",
+          "D",
+          "D",
+          "L"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "5",
+          "per game": "0.83",
+          "Wins": "1",
+          "Draws": "3",
+          "Losses": "2",
+          "Over 2.5": "1/6",
+          "Over 1.5": "5/6",
+          "CS": "2/6",
+          "BTTS": "3/6",
+          "Home_Last6_Wins": 1,
+          "Home_Last6_Draws": 3,
+          "Home_Last6_Losses": 2
+        },
+        "OverallStats": {
+          "Matches": "27",
+          "Goals": "38",
+          "per game": "1.41",
+          "Wins": "9",
+          "Draws": "7",
+          "Losses": "11",
+          "Over 2.5": "51.9%",
+          "Over 1.5": "74.1%",
+          "CS": "18.52%",
+          "BTTS": "62.96%"
+        }
+      },
+      "Dinamo Batumi": {
+        "Form": [
+          "L",
+          "W",
+          "L",
+          "W",
+          "L",
+          "L"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "5",
+          "per game": "0.83",
+          "Wins": "2",
+          "Draws": "0",
+          "Losses": "4",
+          "Over 2.5": "4/6",
+          "Over 1.5": "5/6",
+          "CS": "1/6",
+          "BTTS": "2/6",
+          "Away_Last6_Wins": 2,
+          "Away_Last6_Draws": 0,
+          "Away_Last6_Losses": 4
+        },
+        "OverallStats": {
+          "Matches": "72",
+          "Goals": "75",
+          "per game": "1.04",
+          "Wins": "24",
+          "Draws": "21",
+          "Losses": "27",
+          "Over 2.5": "40.3%",
+          "Over 1.5": "68.1%",
+          "CS": "29.17%",
+          "BTTS": "48.61%"
+        }
+      }
     },
     {
-      "Date": "",
-      "Time": "",
-      "Home": "Sholing",
-      "Score": "-",
-      "Away": "Aldershot",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/aldershot/sholing/"
+      "Home": "Viimsi MRJK",
+      "Score": "1-1",
+      "Away": "Nomme United",
+      "League": "ee 2",
+      "Viimsi MRJK": {
+        "Form": [
+          "D",
+          "D",
+          "D",
+          "W",
+          "W",
+          "W"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "11",
+          "per game": "1.83",
+          "Wins": "3",
+          "Draws": "3",
+          "Losses": "0",
+          "Over 2.5": "4/6",
+          "Over 1.5": "5/6",
+          "CS": "2/6",
+          "BTTS": "4/6",
+          "Home_Last6_Wins": 3,
+          "Home_Last6_Draws": 3,
+          "Home_Last6_Losses": 0
+        },
+        "OverallStats": {
+          "Matches": "28",
+          "Goals": "60",
+          "per game": "2.14",
+          "Wins": "16",
+          "Draws": "6",
+          "Losses": "6",
+          "Over 2.5": "60.7%",
+          "Over 1.5": "78.6%",
+          "CS": "42.86%",
+          "BTTS": "46.43%"
+        }
+      },
+      "Nomme United": {
+        "Form": [
+          "D",
+          "L",
+          "W",
+          "W",
+          "W",
+          "W"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "17",
+          "per game": "2.83",
+          "Wins": "4",
+          "Draws": "1",
+          "Losses": "1",
+          "Over 2.5": "4/6",
+          "Over 1.5": "6/6",
+          "CS": "1/6",
+          "BTTS": "4/6",
+          "Away_Last6_Wins": 4,
+          "Away_Last6_Draws": 1,
+          "Away_Last6_Losses": 1
+        },
+        "OverallStats": {
+          "Matches": "29",
+          "Goals": "83",
+          "per game": "2.86",
+          "Wins": "20",
+          "Draws": "3",
+          "Losses": "6",
+          "Over 2.5": "69.0%",
+          "Over 1.5": "89.7%",
+          "CS": "34.48%",
+          "BTTS": "51.72%"
+        }
+      }
     },
     {
-      "Date": "",
-      "Time": "",
-      "Home": "Broxburn Athletic",
-      "Score": "-",
-      "Away": "Edusport Academy",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/broxburn_athletic/edusport-academy/"
+      "Home": "FS Rustavi",
+      "Score": "1-0",
+      "Away": "Meshakhte",
+      "League": "ge 2",
+      "FS Rustavi": {
+        "Form": [
+          "W",
+          "W",
+          "D",
+          "W",
+          "D",
+          "L"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "7",
+          "per game": "1.17",
+          "Wins": "3",
+          "Draws": "2",
+          "Losses": "1",
+          "Over 2.5": "2/6",
+          "Over 1.5": "5/6",
+          "CS": "2/6",
+          "BTTS": "3/6",
+          "Home_Last6_Wins": 3,
+          "Home_Last6_Draws": 2,
+          "Home_Last6_Losses": 1
+        },
+        "OverallStats": {
+          "Matches": "17",
+          "Goals": "21",
+          "per game": "1.24",
+          "Wins": "7",
+          "Draws": "7",
+          "Losses": "3",
+          "Over 2.5": "35.3%",
+          "Over 1.5": "76.5%",
+          "CS": "35.29%",
+          "BTTS": "52.94%"
+        }
+      },
+      "Meshakhte": {
+        "Form": [
+          "W",
+          "L",
+          "W",
+          "W",
+          "W",
+          "D"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "10",
+          "per game": "1.67",
+          "Wins": "4",
+          "Draws": "1",
+          "Losses": "1",
+          "Over 2.5": "2/6",
+          "Over 1.5": "2/6",
+          "CS": "5/6",
+          "BTTS": "0/6",
+          "Away_Last6_Wins": 4,
+          "Away_Last6_Draws": 1,
+          "Away_Last6_Losses": 1
+        },
+        "OverallStats": {
+          "Matches": "19",
+          "Goals": "19",
+          "per game": "1.00",
+          "Wins": "6",
+          "Draws": "8",
+          "Losses": "5",
+          "Over 2.5": "31.6%",
+          "Over 1.5": "52.6%",
+          "CS": "52.63%",
+          "BTTS": "36.84%"
+        }
+      }
     },
     {
-      "Date": "",
-      "Time": "",
-      "Home": "FK Crvena zvezda",
-      "Score": "-",
-      "Away": "Lincoln Red Imps FC",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fk-crvena-zvezda/lincoln-red-imps-fc/"
+      "Home": "HJK",
+      "Score": "5-1",
+      "Away": "Ilves",
+      "League": "fi 1",
+      "HJK": {
+        "Form": [
+          "L",
+          "D",
+          "W",
+          "D",
+          "W",
+          "W"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "15",
+          "per game": "2.50",
+          "Wins": "3",
+          "Draws": "2",
+          "Losses": "1",
+          "Over 2.5": "5/6",
+          "Over 1.5": "5/6",
+          "CS": "2/6",
+          "BTTS": "4/6",
+          "Home_Last6_Wins": 3,
+          "Home_Last6_Draws": 2,
+          "Home_Last6_Losses": 1
+        },
+        "OverallStats": {
+          "Matches": "31",
+          "Goals": "61",
+          "per game": "1.97",
+          "Wins": "15",
+          "Draws": "5",
+          "Losses": "11",
+          "Over 2.5": "74.2%",
+          "Over 1.5": "83.9%",
+          "CS": "29.03%",
+          "BTTS": "51.61%"
+        }
+      },
+      "Ilves": {
+        "Form": [
+          "D",
+          "L",
+          "W",
+          "W",
+          "D",
+          "W"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "10",
+          "per game": "1.67",
+          "Wins": "3",
+          "Draws": "2",
+          "Losses": "1",
+          "Over 2.5": "4/6",
+          "Over 1.5": "4/6",
+          "CS": "2/6",
+          "BTTS": "3/6",
+          "Away_Last6_Wins": 3,
+          "Away_Last6_Draws": 2,
+          "Away_Last6_Losses": 1
+        },
+        "OverallStats": {
+          "Matches": "27",
+          "Goals": "52",
+          "per game": "1.93",
+          "Wins": "15",
+          "Draws": "5",
+          "Losses": "7",
+          "Over 2.5": "70.4%",
+          "Over 1.5": "81.5%",
+          "CS": "44.44%",
+          "BTTS": "40.74%"
+        }
+      }
     },
     {
-      "Date": "",
-      "Time": "",
-      "Home": "General Caballero JLM",
-      "Score": "-",
-      "Away": "Sportivo Trinidense",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/general-caballero-jlm/sportivo-trinidense/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Leiknir Reykjavik",
-      "Score": "-",
-      "Away": "Keflavik",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/keflavik/leiknir-reykjavik/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Njardvik",
-      "Score": "-",
-      "Away": "HK Kopavogs",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/hk-kopavogs/njardvik/"
-    },
-    {
-      "Date": "",
-      "Time": "",
-      "Home": "Throttur Reykjav\u00edk",
-      "Score": "-",
-      "Away": "Fylkir",
-      "League": "",
-      "Venue": "",
-      "H2H_URL": "https://www.fctables.com/h2h/fylkir/throttur-reykjavik/"
+      "Home": "Ullern",
+      "Score": "1-3",
+      "Away": "KFUM 2",
+      "League": "no 4",
+      "Ullern": {
+        "Form": [
+          "L",
+          "L",
+          "W",
+          "D",
+          "L",
+          "W"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "20",
+          "per game": "3.33",
+          "Wins": "2",
+          "Draws": "1",
+          "Losses": "3",
+          "Over 2.5": "6/6",
+          "Over 1.5": "6/6",
+          "CS": "1/6",
+          "BTTS": "5/6",
+          "Home_Last6_Wins": 2,
+          "Home_Last6_Draws": 1,
+          "Home_Last6_Losses": 3
+        },
+        "OverallStats": {
+          "Matches": "17",
+          "Goals": "46",
+          "per game": "2.71",
+          "Wins": "8",
+          "Draws": "1",
+          "Losses": "8",
+          "Over 2.5": "94.1%",
+          "Over 1.5": "94.1%",
+          "CS": "5.88%",
+          "BTTS": "82.35%"
+        }
+      },
+      "KFUM 2": {
+        "Form": [
+          "D",
+          "L",
+          "L",
+          "W",
+          "W",
+          "D"
+        ],
+        "Last6Stats": {
+          "Matches": "6",
+          "Goals": "9",
+          "per game": "1.50",
+          "Wins": "2",
+          "Draws": "2",
+          "Losses": "2",
+          "Over 2.5": "3/6",
+          "Over 1.5": "4/6",
+          "CS": "1/6",
+          "BTTS": "4/6",
+          "Away_Last6_Wins": 2,
+          "Away_Last6_Draws": 2,
+          "Away_Last6_Losses": 2
+        },
+        "OverallStats": {
+          "Matches": "14",
+          "Goals": "22",
+          "per game": "1.57",
+          "Wins": "4",
+          "Draws": "4",
+          "Losses": "6",
+          "Over 2.5": "57.1%",
+          "Over 1.5": "71.4%",
+          "CS": "28.57%",
+          "BTTS": "64.29%"
+        }
+      }
     }
   ]
 }

@@ -30,9 +30,6 @@ The ML backend predicts:
 ### Features Used for Prediction
 - Recent team form (wins, draws, losses)
 - Team strength proxies (goal difference, rolling averages)
-- Elo-like features (from historical data)
-- Match context (league importance, month, weekend)
-- Simple odds proxies (if available)
 - Rolling win rates and volatility
 
 > **Note:** Head-to-head (H2H) stats are collected and available, but not currently used as ML features by default.
